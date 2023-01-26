@@ -1,0 +1,12 @@
+:root {
+  --main-black-color: #000000;
+  --main-white-color: #000000;
+  --main-light-color: #bdbdbd;
+  --accent-color: #24cca7;
+  --accent-secondary-color: #ff6596;
+  --icon-color: #4a56e2;
+
+  --desktop: 1280px;
+  --tablet: 768px;
+  --phone: 320px;
+}
