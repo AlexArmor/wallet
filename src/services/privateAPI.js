@@ -1,13 +1,12 @@
 import axios from "axios";
 
 const instanceCurrency = axios.create({
-    baseURL: 'https://api.privatbank.ua/p24api/pubinfo?exchange&coursid=5',
+    baseURL: 'https://api.privatbank.ua/p24api/',
 });
 
 export const getCurrency = async () => {
     const {
         data
-    } = await instanceCurrency.get();
-
+    } = await instanceCurrency.get('pubinfo?exchange&coursid=11');
     return data;
 };
