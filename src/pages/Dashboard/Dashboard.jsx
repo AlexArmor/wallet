@@ -1,4 +1,5 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
+import { Suspense } from 'react';
 export default function Dashboard() {
   return (
     <ul>
@@ -8,6 +9,9 @@ export default function Dashboard() {
       <li>
         <NavLink to="statistics">StatisticsPage</NavLink>
       </li>
+      <Suspense fallback={<p>Loading...</p>}>
+        <Outlet />
+      </Suspense>
     </ul>
   );
 }
