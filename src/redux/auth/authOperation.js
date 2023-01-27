@@ -1,6 +1,8 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+
 axios.defaults.baseURL = 'https://wallet.goit.ua/';
+
 const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -9,17 +11,37 @@ const token = {
     axios.defaults.headers.common.Authorization = '';
   },
 };
-export const register = createAsyncThunk('auth/register', async credentials => {
-  try {
-    const { data } = await axios({
-      method: 'POST',
-      url: 'api/auth/sign-up',
-      data: credentials,
-    });
-    token.set(data.token);
-    return data;
-  } catch (error) {}
-});
+
+export const register = createAsyncThunk(
+  'auth/register',
+  async (userData, thunkAPI) => {
+    try {
+      const { data } = await axios({
+        method: 'POST',
+        url: 'api/auth/sign-up',
+        data: userData,
+      });
+      token.set(data.token);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const login = createAsyncThunk(
+  'auth/login',
+  async (userData, thunkAPI) => {
+    try {
+      const { data } = await axios.post('/api/auth/sign-in', userData);
+      token.set(data.token);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const getCurrentUser = createAsyncThunk(
   'auth/fetchCurrentUser',
   async (_, thunkAPI) => {
@@ -36,6 +58,8 @@ export const getCurrentUser = createAsyncThunk(
       });
 
       return data;
-    } catch (error) {}
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
 );

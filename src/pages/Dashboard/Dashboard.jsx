@@ -1,6 +1,6 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
+import { Suspense } from 'react';
 import { Currency } from 'components/Currency/Currency';
-
 export default function Dashboard() {
   return (
     <>
@@ -13,6 +13,9 @@ export default function Dashboard() {
         </li>
       </ul>
       <Currency />
+      <Suspense fallback={<p>Loading...</p>}>
+        <Outlet />
+      </Suspense>
     </>
   );
 }
