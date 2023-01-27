@@ -1,0 +1,97 @@
+.header {
+    min-width: 320px;
+    display: flex;
+    padding: 15px 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+@media screen and (min-width: 768px) {
+    .header {
+        padding: 20px 32px;
+    }
+}
+@media screen and (min-width: 1280px) {
+    .header {
+        padding: 20px 16px;
+    }
+}
+
+.headerIcon {
+    width: 30px;
+    height: 30px;
+}
+@media screen and (min-width: 768px) {
+    .headerIcon {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+.headerTitle {
+    font-size: 24px;
+    font-family: 'Poppins';
+    font-weight: 700;
+}
+@media screen and (min-width: 768px) {
+    .headerTitle {
+        font-size: 30px;
+    }
+}
+
+.headerLinkWrapper {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+@media screen and (min-width: 1280px) {
+    .headerLinkWrapper {
+        gap: 20px;
+    }
+}
+
+.headerLogOutWrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+@media screen and (min-width: 768px) {
+    .headerLogOutWrapper {
+        gap: 12px;
+    }
+}
+
+.headerLogOutName {
+    font-size: 18px;
+    color: var(--main-light-color);
+    font-family: 'Circe';
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+@media screen and (min-width: 768px) {
+    .headerLogOutName::after {
+        content: '';
+        display: block;
+        width: 1px;
+        height: 30px;
+        background-color: var(--main-light-color);
+    }
+}
+
+.headerIconLogOut {
+    height: 18px;
+    width: 18px;
+}
+
+.headerLogOutBtn {
+    display: flex;
+    align-items: center;
+    background: none;
+    gap: 8px;
+}
+
+.headerLogOutExit {
+    font-size: 18px;
+    color: var(--main-light-color);
+    font-family: 'Circe';
+}

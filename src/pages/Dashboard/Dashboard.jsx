@@ -1,9 +1,11 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import { Currency } from 'components/Currency/Currency';
+import { Header } from 'components/Header/Header';
 export default function Dashboard() {
   return (
     <>
+      <Header/>
       <ul>
         <li>
           <NavLink to="home">HomePage</NavLink>
