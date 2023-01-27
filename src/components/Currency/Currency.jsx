@@ -1,8 +1,8 @@
 import { getCurrency } from 'services/privateAPI';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 export const Currency = () => {
-  const [exchangeRates, setExchangeRates] = useState([]);
+  // const [exchangeRates, setExchangeRates] = useState([]);
 
   useEffect(() => {
     getCurrency()
