@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTransaction } from 'redux/finance/transactionOperation';
 import { createPortal } from 'react-dom';
 import { toggleModalAddTransactionOpen } from 'redux/global/globalSlice';
-import { Formik, Form, Field, useFormik, ErrorMessage } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import Datetime from 'react-datetime';
 
