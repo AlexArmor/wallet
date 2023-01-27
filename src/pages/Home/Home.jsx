@@ -1,5 +1,5 @@
 import ButtonAddTransaction from 'components/ButtonAddTransaction/ButtonAddTransaction';
-import ModalAddTransaction from 'modals/ModalAddTransaction';
+import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransaction';
 import { useSelector } from 'react-redux';
 
 export default function Home() {
