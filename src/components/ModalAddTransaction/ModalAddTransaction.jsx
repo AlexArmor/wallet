@@ -68,25 +68,24 @@ const ModalAddTransaction = () => {
     setAmount('');
     e.target.reset();
   };
-  const closeModalAdd = () => {
-    dispatch(toggleModalAddTransactionOpen());
-  };
+
   const overlayClick = e => {
     if (e.currentTarget === e.target) {
-      closeModalAdd();
+      dispatch(toggleModalAddTransactionOpen());
     }
   };
+
   useEffect(() => {
     const handleKeydown = e => {
       if (e.code === 'Escape') {
-        closeModalAdd();
+        dispatch(toggleModalAddTransactionOpen());
       }
     };
     window.addEventListener('keydown', handleKeydown);
     return () => {
       window.removeEventListener('keydown', handleKeydown);
     };
-  }, [closeModalAdd]);
+  }, [dispatch]);
 
   return createPortal(
     <div className="overlay" onClick={overlayClick}>
@@ -148,7 +147,10 @@ const ModalAddTransaction = () => {
             />
           </label>
           <button type="submit">ADD</button>
-          <button type="button" onClick={closeModalAdd}>
+          <button
+            type="button"
+            onClick={dispatch(toggleModalAddTransactionOpen())}
+          >
             CANCEL
           </button>
         </form>
