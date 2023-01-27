@@ -149,7 +149,9 @@ const ModalAddTransaction = () => {
           <button type="submit">ADD</button>
           <button
             type="button"
-            onClick={dispatch(toggleModalAddTransactionOpen())}
+            onClick={() => {
+              dispatch(toggleModalAddTransactionOpen());
+            }}
           >
             CANCEL
           </button>
