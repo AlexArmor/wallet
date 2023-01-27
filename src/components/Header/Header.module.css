@@ -1,0 +1,26 @@
+.header {
+    min-width: 320px;
+    display: flex;
+    padding: 15px 20px;
+    align-items: center;
+}
+
+.headerIcon {
+    width: 30px;
+    height: 30px;
+}
+
+.title {
+    font-size: 24px;
+}
+
+.linkWrapper {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.iconLogOut {
+    height: 18px;
+    width: 18px;
+}
