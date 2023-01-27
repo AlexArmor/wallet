@@ -7,13 +7,13 @@ export const Currency = () => {
   useEffect(() => {
     getCurrency()
       .then(data => {
-        setExchangeRates({ data });
-        console.log(exchangeRates);
+        // setExchangeRates({ data });
+        console.log(data);
       })
       .catch(err => {
         console.log(err.message);
       });
-  }, [exchangeRates]);
+  }, []);
 
   return (
     <>
