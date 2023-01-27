@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 // axios.defaults.baseURL = 'https://wallet.goit.ua/';
-const instanceRegister = axios.create({
+export const instanceRegister = axios.create({
   baseURL: 'https://wallet.goit.ua/',
 });
 
