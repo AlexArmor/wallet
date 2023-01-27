@@ -5,8 +5,18 @@ import Login from 'pages/Login/Login';
 import Dashboard from 'pages/Dashboard/Dashboard';
 import Statistics from 'pages/Statistics/Statistics';
 import Home from 'pages/Home/Home';
+import { useDispatch } from 'react-redux';
+import { getTransactionCategories } from 'redux/finance/transactionOperation';
+import { getCurrentUser } from 'redux/auth/authOperation';
+import { useEffect } from 'react';
 
 export const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCurrentUser());
+    dispatch(getTransactionCategories());
+  }, [dispatch]);
   return (
     <Routes>
       <Route path="/" element={<Navigation />} />
