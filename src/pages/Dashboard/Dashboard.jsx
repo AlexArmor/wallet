@@ -1,21 +1,21 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
-import { Header } from 'components/Header/Header';
+import { Currency } from 'components/Currency/Currency';
 export default function Dashboard() {
   return (
     <>
-    <Header/>
-    <ul>
-      <li>
-        <NavLink to="home">HomePage</NavLink>
-      </li>
-      <li>
-        <NavLink to="statistics">StatisticsPage</NavLink>
-      </li>
+      <ul>
+        <li>
+          <NavLink to="home">HomePage</NavLink>
+        </li>
+        <li>
+          <NavLink to="statistics">StatisticsPage</NavLink>
+        </li>
+      </ul>
+      <Currency />
       <Suspense fallback={<p>Loading...</p>}>
         <Outlet />
       </Suspense>
-    </ul>
     </>
   );
 }
