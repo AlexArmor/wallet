@@ -4,12 +4,12 @@ const { useDispatch } = require('react-redux');
 
 const ButtonAddTransaction = () => {
   const dispatch = useDispatch();
-  const handleClose = () => {
+  const handleOpen = () => {
     dispatch(toggleModalAddTransactionOpen());
   };
 
   return (
-    <button type="button" onClick={handleClose}>
+    <button type="button" onClick={handleOpen}>
       Open
     </button>
   );

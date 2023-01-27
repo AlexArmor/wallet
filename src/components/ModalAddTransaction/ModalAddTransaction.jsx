@@ -4,6 +4,7 @@ import { addTransaction } from 'redux/finance/transactionOperation';
 import { createPortal } from 'react-dom';
 import { toggleModalAddTransactionOpen } from 'redux/global/globalSlice';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import style from './ModalAddTransaction.module.css';
 import * as yup from 'yup';
 import Datetime from 'react-datetime';
 
@@ -89,8 +90,8 @@ const ModalAddTransaction = () => {
   }, [dispatch]);
 
   return createPortal(
-    <div className="overlay" onClick={overlayClick}>
-      <div className="Modal">
+    <div className={style.overlay} onClick={overlayClick}>
+      <div className={style.modal}>
         {' '}
         <Formik
           initialValues={{
@@ -105,8 +106,8 @@ const ModalAddTransaction = () => {
         >
           {({ values }) => {
             return (
-              <Form>
-                Add transaction
+              <Form className={style.form}>
+                <h1 className={style.title}> Add transaction</h1>
                 <div role="group" aria-labelledby="my-radio-group">
                   {' '}
                   <label>
@@ -152,9 +153,12 @@ const ModalAddTransaction = () => {
                 <ErrorMessage name="amount" />
                 <Field type="text" name="comment" />
                 <ErrorMessage name="comment" />
-                <button type="submit">ADD</button>
+                <button type="submit" className={style.btnAgree}>
+                  ADD
+                </button>
                 <button
                   type="button"
+                  className={style.btnDisagree}
                   onClick={() => {
                     dispatch(toggleModalAddTransactionOpen());
                   }}
