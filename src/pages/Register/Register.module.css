@@ -1,0 +1,68 @@
+@media screen and (min-width: 768px) {
+  .register {
+    display: flex;
+    height: 100vh;
+    background-image: url(../../images/bg-tab.jpg);
+    background-size: cover;
+    background-position: center;
+  }
+  .register__wrapper::before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 1;
+    width: 260px;
+    height: 250px;
+    left: 114px;
+    top: 60px;
+    margin: 0;
+    background-image: url(../../images/phone-registr-tab.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+  .register__title {
+    font-family: 'Poppins';
+    font-size: 30px;
+    font-weight: 400;
+    line-height: calc(48 / 30);
+  }
+  @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .register {
+      background-image: url(../../images/bg-tab@2x.jpg);
+    }
+    .register__wrapper::before {
+      background-image: url(../../images/phone-registr-tab@2x.png);
+    }
+  }
+}
+@media screen and (min-width: 1280px) {
+  .register {
+    height: 100vh;
+    background-image: url(../../images/bg-desk.jpg);
+    background-size: cover;
+    background-position: center;
+  }
+  .register__wrapper::before {
+    width: 435px;
+    height: 420px;
+    left: 76px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-image: url(../../images/phone-registr-desk.png);
+  }
+  @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .register {
+      background-image: url(../../images/bg-desk@2x.jpg);
+    }
+    .register__wrapper::before {
+      background-image: url(../../images/phone-registr-desk@2x.png);
+    }
+  }
+}
