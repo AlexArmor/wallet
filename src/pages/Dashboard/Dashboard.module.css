@@ -1,0 +1,32 @@
+@media screen and (min-width: 768px) {
+  .dashboard {
+    height: 100vh;
+    background-image: url(../../images/bg-blur-tab.jpg);
+    background-size: cover;
+    background-position: center;
+  }
+
+  @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .dashboard {
+      background-image: url(../../images/bg-blur-tab@2x.jpg);
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .dashboard {
+    background-image: url(../../images/bg-blur-desk.jpg);
+  }
+
+  @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .dashboard {
+      background-image: url(../../images/bg-blur-desk@2x.jpg);
+    }
+  }
+}
