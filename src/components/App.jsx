@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { Layout } from './Layout/Layout';
+// import { Layout } from './Layout/Layout';
 import Register from 'pages/Register/Register';
 import Login from 'pages/Login/Login';
 import Dashboard from 'pages/Dashboard/Dashboard';
@@ -27,32 +27,25 @@ export const App = () => {
   ) : (
     <>
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route
-            path="/login"
-            element={
-              <RestrictedRoute redirectTo="/dashboard" component={<Login />} />
-            }
-          />
-          <Route
-            path="/register"
-            element={
-              <RestrictedRoute
-                redirectTo="/dashboard"
-                component={<Register />}
-              />
-            }
-          />
-          <Route
-            path="/dashboard"
-            element={
-              <PrivateRoute redirectTo="/login" component={<Dashboard />} />
-            }
-          >
-            <Route index path="home" element={<Home />} />
-            <Route path="statistics" element={<Statistics />} />
-          </Route>
+        {/* <Route path="/" element={<Layout />}> */}
+        <Route
+          path="/"
+          element={
+            <PrivateRoute redirectTo="/login" component={<Dashboard />} />
+          }
+        >
+          <Route index element={<Home />} />
+          <Route path="statistics" element={<Statistics />} />
         </Route>
+        <Route
+          path="/login"
+          element={<RestrictedRoute redirectTo="/" component={<Login />} />}
+        />
+        <Route
+          path="/register"
+          element={<RestrictedRoute redirectTo="/" component={<Register />} />}
+        />
+        {/* </Route> */}
         <Route path="*" element={<p>Not Found</p>} />
       </Routes>
     </>

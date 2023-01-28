@@ -5,10 +5,10 @@ import { Header } from 'components/Header/Header';
 export default function Dashboard() {
   return (
     <>
-      <Header/>
+      <Header />
       <ul>
         <li>
-          <NavLink to="home">HomePage</NavLink>
+          <NavLink to="/">HomePage</NavLink>
         </li>
         <li>
           <NavLink to="statistics">StatisticsPage</NavLink>
