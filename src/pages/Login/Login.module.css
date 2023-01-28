@@ -16,7 +16,7 @@
     left: 114px;
     top: 60px;
     margin: 0;
-    background-image: url(../../images/phone-login-tab.png);
+    background-image: url(../../images/phone-login.svg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -34,9 +34,6 @@
     .login {
       background-image: url(../../images/bg-tab@2x.jpg);
     }
-    .login__wrapper::before {
-      background-image: url(../../images/phone-login-tab@2x.png);
-    }
   }
 }
 @media screen and (min-width: 1280px) {
@@ -52,7 +49,6 @@
     left: 76px;
     top: 50%;
     transform: translateY(-50%);
-    background-image: url(../../images/phone-login-desk.png);
   }
   @media (min-device-pixel-ratio: 2),
     (-webkit-min-device-pixel-ratio: 2),
@@ -60,9 +56,6 @@
     (min-resolution: 2dppx) {
     .login {
       background-image: url(../../images/bg-desk@2x.jpg);
-    }
-    .login__wrapper::before {
-      background-image: url(../../images/phone-login-desk@2x.png);
     }
   }
 }
