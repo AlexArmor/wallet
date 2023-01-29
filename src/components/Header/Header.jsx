@@ -17,12 +17,12 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.headerLinkWrapper}>
-        <Link to="home">
+        <Link to="/">
           <svg className={styles.headerIcon}>
             <use href={sprite + '#wallet'}></use>
           </svg>
         </Link>
-        <Link to="home">
+        <Link to="/">
           <h2 className={styles.headerTitle}>Wallet</h2>
         </Link>
       </div>
