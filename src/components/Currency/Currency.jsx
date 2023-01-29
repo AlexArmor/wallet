@@ -1,14 +1,29 @@
-import { getCurrency } from 'services/privateAPI';
-import { useEffect } from 'react';
+import { getCurrency } from 'services/currencyAPI';
+import { useState, useEffect } from 'react';
 
 export const Currency = () => {
-  // const [exchangeRates, setExchangeRates] = useState([]);
+  const [usd, setUsd] = useState({ rateBuy: 0, rateSell: 0 });
+  const [eur, setEur] = useState({ rateBuy: 0, rateSell: 0 });
+
+  const UAH_CODE = 980;
+  const USD_CODE = 840;
+  const EUR_CODE = 978;
 
   useEffect(() => {
     getCurrency()
       .then(data => {
-        // setExchangeRates({ data });
-        console.log(data);
+        setUsd(
+          data.find(
+            ({ currencyCodeA, currencyCodeB }) =>
+              currencyCodeA === USD_CODE && currencyCodeB === UAH_CODE
+          )
+        );
+        setEur(
+          data.find(
+            ({ currencyCodeA, currencyCodeB }) =>
+              currencyCodeA === EUR_CODE && currencyCodeB === UAH_CODE
+          )
+        );
       })
       .catch(err => {
         console.log(err.message);
@@ -28,13 +43,13 @@ export const Currency = () => {
         <tbody>
           <tr>
             <td>USD</td>
-            <td>27.55</td>
-            <td>27.65</td>
+            <td>{usd.rateBuy.toFixed(2)}</td>
+            <td>{usd.rateSell.toFixed(2)}</td>
           </tr>
           <tr>
             <td>EUR</td>
-            <td>30.00</td>
-            <td>30.10</td>
+            <td>{eur.rateBuy.toFixed(2)}</td>
+            <td>{eur.rateSell.toFixed(2)}</td>
           </tr>
         </tbody>
       </table>
