@@ -1,0 +1,9 @@
+.tableCurrency {
+  table-layout: fixed;
+  border-collapse: collapse;
+  /* width: 100%; */
+  width: 393px;
+  height: 331px;
+  background-color: #4a56e2;
+  border-radius: 30px;
+}

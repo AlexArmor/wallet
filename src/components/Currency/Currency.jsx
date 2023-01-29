@@ -1,5 +1,6 @@
 import { getCurrency } from 'services/currencyAPI';
 import { useState, useEffect } from 'react';
+import css from './Currency.module.css';
 
 export const Currency = () => {
   const [usd, setUsd] = useState({ rateBuy: 0, rateSell: 0 });
@@ -8,6 +9,8 @@ export const Currency = () => {
   const UAH_CODE = 980;
   const USD_CODE = 840;
   const EUR_CODE = 978;
+
+  let currencyLoading = false;
 
   useEffect(() => {
     getCurrency()
@@ -32,27 +35,31 @@ export const Currency = () => {
 
   return (
     <>
-      <table>
-        <thead>
-          <tr>
-            <th>Currency</th>
-            <th>Purchase</th>
-            <th>Sale</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>USD</td>
-            <td>{usd.rateBuy.toFixed(2)}</td>
-            <td>{usd.rateSell.toFixed(2)}</td>
-          </tr>
-          <tr>
-            <td>EUR</td>
-            <td>{eur.rateBuy.toFixed(2)}</td>
-            <td>{eur.rateSell.toFixed(2)}</td>
-          </tr>
-        </tbody>
-      </table>
+      {currencyLoading ? (
+        <p>Loading process</p>
+      ) : (
+        <table className={css.tableCurrency}>
+          <thead className={css.tableHead}>
+            <tr className={css.tableTitle}>
+              <th className={css.tableItemHead}>Currency</th>
+              <th className={css.tableItemHead}>Purchase</th>
+              <th className={css.tableItemHead}>Sale</th>
+            </tr>
+          </thead>
+          <tbody className={css.tableBody}>
+            <tr className={css.tableList}>
+              <td className={css.tableItem}>USD</td>
+              <td className={css.tableItem}>{usd.rateBuy.toFixed(2)}</td>
+              <td className={css.tableItem}>{usd.rateSell.toFixed(2)}</td>
+            </tr>
+            <tr className={css.tableList}>
+              <td className={css.tableItem}>EUR</td>
+              <td className={css.tableItem}>{eur.rateBuy.toFixed(2)}</td>
+              <td className={css.tableItem}>{eur.rateSell.toFixed(2)}</td>
+            </tr>
+          </tbody>
+        </table>
+      )}
     </>
   );
 };
