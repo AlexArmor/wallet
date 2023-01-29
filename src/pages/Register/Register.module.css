@@ -1,0 +1,75 @@
+.register__wrapper {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .register {
+    padding: 60px 117px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    background-image: url(../../images/bg-tab.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .register__img {
+    width: 260px;
+    height: 250px;
+    background-image: url(../../images/phone-registr.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+  .register__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+  }
+  .register__title {
+    font-family: 'Poppins';
+    font-size: 30px;
+    font-weight: 400;
+    line-height: calc(48 / 30);
+  }
+  @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .register {
+      background-image: url(../../images/bg-tab@2x.jpg);
+    }
+  }
+}
+@media screen and (min-width: 1280px) {
+  .register {
+    padding: 52px 91px 52px 66px;
+    height: 100vh;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 138px;
+    background-image: url(../../images/bg-desk.jpg);
+    background-size: cover;
+    background-position: center;
+  }
+  .register__img {
+    width: 435px;
+    height: 420px;
+  }
+  .register__wrapper {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  @media (min-device-pixel-ratio: 2),
+    (-webkit-min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    .register {
+      background-image: url(../../images/bg-desk@2x.jpg);
+    }
+  }
+}
