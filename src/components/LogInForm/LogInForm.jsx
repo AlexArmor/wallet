@@ -31,7 +31,6 @@ export const LogInForm = () => {
       email,
       password,
     };
-    console.log(userData);
     dispatch(login(userData));
     actions.resetForm();
   };

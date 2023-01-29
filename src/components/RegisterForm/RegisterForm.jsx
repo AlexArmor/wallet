@@ -36,16 +36,15 @@ let schema = yup.object().shape({
 export const RegisterForm = () => {
   const dispatch = useDispatch();
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    const form = e.currentTarget;
+  const handleSubmit = (values, actions) => {
+    const { email, password, userName } = values;
     const newUser = {
-      username: form.elements.name.value,
-      email: form.elements.email.value,
-      password: form.elements.password.value,
+      username: userName,
+      email,
+      password,
     };
     dispatch(register(newUser));
-    form.reset();
+    actions.resetForm();
   };
 
   return (
