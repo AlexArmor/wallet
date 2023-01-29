@@ -6,20 +6,22 @@ import css from './Dashboard.module.css';
 
 export default function Dashboard() {
   return (
-    <section className={css.dashboard}>
+    <>
       <Header />
-      <ul>
-        <li>
-          <NavLink to="/">HomePage</NavLink>
-        </li>
-        <li>
-          <NavLink to="statistics">StatisticsPage</NavLink>
-        </li>
-      </ul>
-      <Currency />
-      <Suspense fallback={<p>Loading...</p>}>
-        <Outlet />
-      </Suspense>
-    </section>
+      <section className={css.dashboard}>
+        <ul>
+          <li>
+            <NavLink to="/">HomePage</NavLink>
+          </li>
+          <li>
+            <NavLink to="statistics">StatisticsPage</NavLink>
+          </li>
+        </ul>
+        <Currency />
+        <Suspense fallback={<p>Loading...</p>}>
+          <Outlet />
+        </Suspense>
+      </section>
+    </>
   );
 }

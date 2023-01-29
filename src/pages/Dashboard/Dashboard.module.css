@@ -1,5 +1,6 @@
 @media screen and (min-width: 768px) {
   .dashboard {
+    padding: 0 32px;
     height: 100vh;
     background-image: url(../../images/bg-blur-tab.jpg);
     background-size: cover;
@@ -16,8 +17,9 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1280px) {
   .dashboard {
+    padding: 0 18px;
     background-image: url(../../images/bg-blur-desk.jpg);
   }
 

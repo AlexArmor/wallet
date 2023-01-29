@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom';
-// import { Layout } from './Layout/Layout';
 import Register from 'pages/Register/Register';
 import Login from 'pages/Login/Login';
 import Dashboard from 'pages/Dashboard/Dashboard';
@@ -27,7 +26,6 @@ export const App = () => {
   ) : (
     <>
       <Routes>
-        {/* <Route path="/" element={<Layout />}> */}
         <Route
           path="/"
           element={
@@ -45,7 +43,6 @@ export const App = () => {
           path="/register"
           element={<RestrictedRoute redirectTo="/" component={<Register />} />}
         />
-        {/* </Route> */}
         <Route path="*" element={<p>Not Found</p>} />
       </Routes>
     </>
