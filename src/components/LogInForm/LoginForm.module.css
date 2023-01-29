@@ -1,0 +1,137 @@
+.loginForm {
+  padding-top: 107px;
+  padding-bottom: 62px;
+  width: 100%;
+  height: 100vh;
+  background: #f8e9ff;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 60px;
+}
+
+.logoIcon {
+  width: 30px;
+  height: 30px;
+}
+
+.logoTitle {
+  font-family: 'Poppins';
+  font-weight: 700;
+  font-size: 24px;
+  line-height: calc(45 / 30);
+  color: var(--main-black-color);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 41px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.label {
+  display: block;
+  width: 280px;
+  height: 34px;
+}
+
+.input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  outline: transparent;
+  background-color: transparent;
+  padding-left: 55px;
+  font-family: 'Circe';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: calc(27 / 18);
+  padding-bottom: 8px;
+}
+
+.inputEmail {
+  background-image: url(../../icons/email.svg);
+  background-size: 24px 24px;
+  background-repeat: no-repeat;
+  background-position: 14px 0;
+}
+
+.inputLock {
+  background-image: url(../../icons/lock.svg);
+  background-size: 24px 24px;
+  background-repeat: no-repeat;
+  background-position: 14px 0;
+}
+
+.input::placeholder {
+  font-family: 'Circe';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: calc(27 / 18);
+  color: var(--main-light-color);
+}
+
+.errorMessage {
+  padding-left: 55px;
+  text-align: start;
+  margin-top: 3px;
+  font-family: 'Circe';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: calc(21 / 14);
+  color: var(--accent-secondary-color);
+}
+
+.btn {
+  width: 300px;
+  padding: 13px 0;
+  border-radius: 20px;
+  text-align: center;
+  font-family: 'Circe';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: calc(27 / 18);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.btnLogIn {
+  background: var(--accent-color);
+  color: var(--main-white-color);
+}
+
+.btnRegister {
+  background: #ffffff;
+  border: 1px solid var(--icon-color);
+  color: var(--icon-color);
+}
+
+@media screen and (min-width: 768px) {
+  .loginForm {
+    padding-top: 40px;
+    width: 533px;
+    height: auto;
+  }
+  .logoIcon {
+    width: 40px;
+    height: 40px;
+  }
+  .logoTitle {
+    font-size: 30px;
+  }
+  .label {
+    width: 410px;
+  }
+  .btn {
+    width: 280px;
+  }
+}
