@@ -2,6 +2,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
 import { Currency } from 'components/Currency/Currency';
 import { Header } from 'components/Header/Header';
+import { Loader } from 'components/Loader/Loader';
 import css from './Dashboard.module.css';
 
 export default function Dashboard() {
@@ -18,7 +19,7 @@ export default function Dashboard() {
           </li>
         </ul>
         <Currency />
-        <Suspense fallback={<p>Loading...</p>}>
+        <Suspense fallback={<Loader/>}>
           <Outlet />
         </Suspense>
       </section>
