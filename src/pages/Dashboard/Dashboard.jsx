@@ -1,7 +1,8 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { Suspense } from 'react';
-import { Currency } from 'components/Currency/Currency';
 import { Header } from 'components/Header/Header';
+import { Loader } from 'components/Loader/Loader';
+import { Aside } from 'components/Aside/Aside';
 import css from './Dashboard.module.css';
 
 export default function Dashboard() {
@@ -9,18 +10,14 @@ export default function Dashboard() {
     <>
       <Header />
       <section className={css.dashboard}>
-        <ul>
-          <li>
-            <NavLink to="/">HomePage</NavLink>
-          </li>
-          <li>
-            <NavLink to="statistics">StatisticsPage</NavLink>
-          </li>
-        </ul>
-        <Currency />
-        <Suspense fallback={<p>Loading...</p>}>
-          <Outlet />
-        </Suspense>
+        <div>
+          <Aside />
+        </div>
+        <div>
+          <Suspense fallback={<Loader />}>
+            <Outlet />
+          </Suspense>
+        </div>
       </section>
     </>
   );

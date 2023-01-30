@@ -11,6 +11,7 @@ import { useEffect } from 'react';
 import { PrivateRoute } from 'HOCs/PrivateRoute';
 import { RestrictedRoute } from 'HOCs/RestrictedRoute';
 import { selectIsRefreshing } from 'redux/auth/selectors';
+import { Loader } from './Loader/Loader';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ export const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <p>...Loading</p>
+    <Loader/>
   ) : (
     <>
       <Routes>

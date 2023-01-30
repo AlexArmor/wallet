@@ -1,5 +1,7 @@
 @media screen and (min-width: 768px) {
   .dashboard {
+    display: flex;
+    flex-direction: column;
     padding: 0 32px;
     height: 100vh;
     background-image: url(../../images/bg-blur-tab.jpg);
@@ -19,6 +21,7 @@
 
 @media screen and (min-width: 1280px) {
   .dashboard {
+    flex-direction: row;
     padding: 0 18px;
     background-image: url(../../images/bg-blur-desk.jpg);
   }
