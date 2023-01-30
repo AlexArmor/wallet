@@ -1,9 +1,9 @@
 .overlay {
   position: absolute;
-  top: 0;
+  top: 60px;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 720px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,9 +12,9 @@
 .modal {
   padding: 10px;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   gap: 20px;
   width: 540px;
   height: 603px;
@@ -28,6 +28,7 @@
   flex-direction: column;
 }
 .title {
+  margin: 20px auto 40px;
   text-align: center;
   font-family: 'Poppins';
   font-style: normal;
@@ -35,35 +36,18 @@
   font-size: 30px;
   line-height: calc(45 / 30);
 }
-
-.selectInput {
-  margin: 0 auto;
-  font-family: 'Circe';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: calc(27 / 18);
-  border: none;
-  border-bottom: 1px solid var(--main-light-color);
-  color: #bdbdbd;
-  fill: var(--main-black-color);
-  height: 32px;
+.toggleTypeBlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
 }
 
-.selectItem {
-  background: rgba(255, 255, 255, 0.7);
-  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(25px);
-  border-radius: 20px;
-  color: var(--main-black-color);
-}
-.selectItem:hover,
-.selectItem:focus {
-  color: var(--accent-secondary-color);
-  background: var(--main-white-color);
-}
 .amountInput {
-  margin: 0 auto;
+  height: 32px;
+  min-width: 280px;
+  padding: 8px 20px;
+  margin: 0 auto 40px;
   font-family: 'Circe';
   font-style: normal;
   font-weight: 400;
@@ -79,8 +63,14 @@
   -webkit-appearance: none;
   margin: 0;
 }
+
+/* .errorAmountMessage {
+  position: absolute;
+} */
 .dateInput {
-  margin: 0 auto;
+  height: 32px;
+  min-width: 280px;
+  margin: 0 auto 40px;
   font-family: 'Circe';
   font-style: normal;
   font-weight: 400;
@@ -105,7 +95,9 @@
   display: none;
 }
 .commentInput {
-  margin: 0 auto;
+  height: 84px;
+  min-width: 280px;
+  margin: 0 auto 40px;
   font-family: 'Circe';
   font-style: normal;
   font-weight: 400;
@@ -117,6 +109,7 @@
   height: 32px;
 }
 .btnAgree {
+  margin-bottom: 20px;
   padding: 12px 0;
   background-color: var(--main-white-color);
   width: 300px;
