@@ -6,9 +6,14 @@ import ModalLogout from 'components/ModalLogout/ModalLogout';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleModalLogoutOpen } from 'redux/global/globalSlice';
 import { selectUser } from 'redux/auth/selectors';
+import { getAllTransaction } from 'redux/finance/transactionOperation';
+import { useEffect } from 'react';
+import { selectAllTransactions } from 'redux/finance/selectors';
 
 export const Header = () => {
   const user = useSelector(selectUser)
+  const balance = useSelector(state => state.finance.totalBalance)
+  console.log(balance)
   const isModalLogoutOpen = useSelector(
     state => state.global.isModalLogoutOpen
   );
@@ -16,6 +21,13 @@ export const Header = () => {
   const handleOpen = () => {
     dispatch(toggleModalLogoutOpen());
   };
+  useEffect(() => {
+    dispatch(getAllTransaction())
+  }, [dispatch])
+  const data = useSelector(selectAllTransactions)
+  console.log(data)
+  const userBalance = useSelector(state => state.auth.user.balance )
+  console.log(userBalance)
   return (
     <header className={styles.header}>
       <div className={styles.headerLinkWrapper}>

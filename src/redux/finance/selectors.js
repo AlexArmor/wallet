@@ -1,0 +1,1 @@
+export const selectAllTransactions = state => state.finance.data;
