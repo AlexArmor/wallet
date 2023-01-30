@@ -1,3 +1,7 @@
+.aside {
+  margin-bottom: 32px;
+}
+
 @media screen and (min-width: 768px) {
   .aside {
     padding-top: 40px;

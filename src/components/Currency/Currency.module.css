@@ -1,4 +1,5 @@
 .wrapTable {
+  margin: 0 auto;
   background-color: var(--icon-color);
   width: 280px;
   padding-bottom: 52px;
@@ -37,6 +38,7 @@
 
 @media screen and (min-width: 768px) {
   .wrapTable {
+    margin: 0;
     width: 336px;
     padding-bottom: 56px;
     background-image: url(/src/images/currency-img-tablet.svg),

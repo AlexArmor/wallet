@@ -1,3 +1,4 @@
+import Media from 'react-media';
 import { Navigation } from 'components/Navigation/Navigation';
 import { Currency } from 'components/Currency/Currency';
 import css from './Aside.module.css';
@@ -6,9 +7,9 @@ export function Aside() {
     <div className={css.aside}>
       <div>
         <Navigation />
-        <p>Total Balance</p>
+        <Media query="(min-width: 767px)" render={() => <p>Total Balance</p>} />
       </div>
-      <Currency />
+      <Media query="(min-width: 767px)" render={() => <Currency />} />
     </div>
   );
 }
