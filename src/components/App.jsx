@@ -5,7 +5,7 @@ import Dashboard from 'pages/Dashboard/Dashboard';
 import Statistics from 'pages/Statistics/Statistics';
 import Home from 'pages/Home/Home';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTransactionCategories } from 'redux/finance/transactionOperation';
+
 import { getCurrentUser } from 'redux/auth/authOperation';
 import { useEffect } from 'react';
 import { PrivateRoute } from 'HOCs/PrivateRoute';
@@ -19,11 +19,10 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(getCurrentUser());
-    dispatch(getTransactionCategories());
   }, [dispatch]);
 
   return isRefreshing ? (
-    <Loader/>
+    <Loader />
   ) : (
     <>
       <Routes>

@@ -3,7 +3,7 @@ import { instanceRegister } from 'redux/auth/authOperation';
 
 export const getAllTransaction = createAsyncThunk(
   'finance/fetchAllTransactions',
-  async () => {
+  async (_, thunkAPI) => {
     try {
       const { data } = await instanceRegister({
         method: 'GET',
@@ -11,12 +11,14 @@ export const getAllTransaction = createAsyncThunk(
       });
 
       return data;
-    } catch (error) {}
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
 );
 export const addTransaction = createAsyncThunk(
   'finance/addTransaction',
-  async transaction => {
+  async (transaction, thunkAPI) => {
     try {
       const { data } = await instanceRegister({
         method: 'POST',
@@ -25,12 +27,14 @@ export const addTransaction = createAsyncThunk(
       });
 
       return data;
-    } catch (error) {}
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
 );
 export const deleteTransaction = createAsyncThunk(
   'finance/deleteTransaction',
-  async transactionId => {
+  async (transactionId, thunkAPI) => {
     try {
       const { data } = await instanceRegister({
         method: 'DELETE',
@@ -38,18 +42,22 @@ export const deleteTransaction = createAsyncThunk(
       });
 
       return data;
-    } catch (error) {}
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
 );
 export const getTransactionCategories = createAsyncThunk(
   'finance/getCategories',
-  async () => {
+  async (_, thunkAPI) => {
     try {
       const { data } = await instanceRegister({
         method: 'GET',
         url: 'api/transaction-categories',
       });
       return data;
-    } catch (error) {}
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
 );

@@ -21,6 +21,7 @@ const transactionSlice = createSlice({
     },
     [addTransaction.fulfilled](state, action) {
       state.data.push(action.payload);
+      state.totalBalance = action.payload.balanceAfter;
     },
     [deleteTransaction.fulfilled](state, action) {
       const index = state.data.findIndex(
