@@ -1,11 +1,14 @@
 import { Route, Routes } from 'react-router-dom';
+import Media from 'react-media';
+import { useDispatch, useSelector } from 'react-redux';
+
 import Register from 'pages/Register/Register';
 import Login from 'pages/Login/Login';
 import Dashboard from 'pages/Dashboard/Dashboard';
 import Statistics from 'pages/Statistics/Statistics';
 import Home from 'pages/Home/Home';
-import { useDispatch, useSelector } from 'react-redux';
-import { getTransactionCategories } from 'redux/finance/transactionOperation';
+import Currency from 'pages/Currency/Currency';
+
 import { getCurrentUser } from 'redux/auth/authOperation';
 import { useEffect } from 'react';
 import { PrivateRoute } from 'HOCs/PrivateRoute';
@@ -19,11 +22,10 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(getCurrentUser());
-    dispatch(getTransactionCategories());
   }, [dispatch]);
 
   return isRefreshing ? (
-    <Loader/>
+    <Loader />
   ) : (
     <>
       <Routes>
@@ -35,6 +37,12 @@ export const App = () => {
         >
           <Route index element={<Home />} />
           <Route path="statistics" element={<Statistics />} />
+          <Route
+            path="currency"
+            element={
+              <Media query="(max-width: 767px)" render={() => <Currency />} />
+            }
+          />
         </Route>
         <Route
           path="/login"

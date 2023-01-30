@@ -22,25 +22,99 @@
   background-color: var(--main-white-color);
   border-radius: 20px;
 }
-@media screen and (max-width: 480px) {
-  .modal {
-    width: 100%;
-    height: 100%;
-    border-radius: 0;
-  }
-}
-@media screen and (min-width: 480px) and (max-width: 767px) {
-  .modal {
-    width: 460px;
-    height: 90vh;
-    border-radius: 20px;
-  }
-}
+
 .form {
   display: flex;
   flex-direction: column;
 }
 .title {
+  text-align: center;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: calc(45 / 30);
+}
+
+.selectInput {
+  margin: 0 auto;
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: calc(27 / 18);
+  border: none;
+  border-bottom: 1px solid var(--main-light-color);
+  color: #bdbdbd;
+  fill: var(--main-black-color);
+  height: 32px;
+}
+
+.selectItem {
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(25px);
+  border-radius: 20px;
+  color: var(--main-black-color);
+}
+.selectItem:hover,
+.selectItem:focus {
+  color: var(--accent-secondary-color);
+  background: var(--main-white-color);
+}
+.amountInput {
+  margin: 0 auto;
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: calc(27 / 18);
+  border: none;
+  border-bottom: 1px solid var(--main-light-color);
+
+  height: 32px;
+}
+.amountInput::-webkit-outer-spin-button,
+.amountInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.dateInput {
+  margin: 0 auto;
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: calc(27 / 18);
+  border: none;
+  border-bottom: 1px solid var(--main-light-color);
+
+  height: 32px;
+}
+.dateIcon {
+  width: 18px;
+  height: 20px;
+  position: absolute;
+  top: 3px;
+  right: 19px;
+}
+[type='date']::-webkit-inner-spin-button {
+  display: none;
+}
+[type='date']::-webkit-calendar-picker-indicator {
+  display: none;
+}
+.commentInput {
+  margin: 0 auto;
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: calc(27 / 18);
+  border: none;
+  border-bottom: 1px solid var(--main-light-color);
+
+  height: 32px;
 }
 .btnAgree {
   padding: 12px 0;
@@ -68,4 +142,22 @@
   font-size: 18px;
   line-height: calc(27 / 18);
   border-radius: 20px;
+}
+@media screen and (max-width: 480px) {
+  .modal {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+  .selectInput {
+    min-width: 280px;
+    width: calc(100% - 20px);
+  }
+}
+@media screen and (min-width: 480px) and (max-width: 767px) {
+  .modal {
+    width: 460px;
+    height: 90vh;
+    border-radius: 20px;
+  }
 }
