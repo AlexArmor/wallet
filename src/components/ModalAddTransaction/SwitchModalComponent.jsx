@@ -1,6 +1,6 @@
 import { styled } from '@mui/material/styles';
 import { Switch } from '@mui/material';
-import sprite from '../../icons/sprite.svg';
+
 import plus from '../../icons/plus.svg';
 import minus from '../../icons/minus.svg';
 export const MaterialUISwitch = styled(Switch)(({ theme }) => {
