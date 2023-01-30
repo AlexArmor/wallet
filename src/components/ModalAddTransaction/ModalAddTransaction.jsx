@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTransaction } from 'redux/finance/transactionOperation';
 import { createPortal } from 'react-dom';
@@ -6,11 +6,9 @@ import { toggleModalAddTransactionOpen } from 'redux/global/globalSlice';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import style from './ModalAddTransaction.module.css';
 import * as yup from 'yup';
-import Datetime from 'react-datetime';
-import 'react-datetime/css/react-datetime.css';
-import sprite from '../../icons/sprite.svg';
-import { Switch, Select } from 'formik-mui';
-import { MenuItem, stepLabelClasses, Typography } from '@mui/material';
+import { MaterialUISwitch } from './SwitchModalComponent';
+import { Typography, Select, MenuItem } from '@mui/material';
+import { DatetimeAddTransaction } from './DatetimeAddTransaction';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -21,28 +19,29 @@ const validationSchema = yup.object().shape({
   amount: yup.number().required('Required'),
   comment: yup.string(),
 });
-const customRenderInput = ({ props, openCalendar, closeCalendar }) => {
-  console.log(props);
-
-  return (
-    <div>
-      <input {...props} />
-      <button onClick={openCalendar}>open calendar</button>
-      <button onClick={closeCalendar}>close calendar</button>
-    </div>
-  );
-};
 
 const ModalAddTransaction = () => {
   const dispatch = useDispatch();
-
   const categories = useSelector(state => state.finance.categories);
   const expenseCategories = categories.filter(
     category => category.type !== 'INCOME'
   );
+
   const incomeCategory = categories.find(
     category => category.type === 'INCOME'
   );
+
+  const initialValues = {
+    type: 'EXPENSE',
+    categoryId: incomeCategory.id,
+    amount: '',
+    transactionDate: new Date().toISOString().substring(0, 10),
+    comment: '',
+  };
+
+  const [type, setType] = useState('EXPENSE');
+
+  // const [amount, setAmount] = useState(0);
 
   const handleSubmitAddTransaction = (value, actions) => {
     const dataForRequest = {
@@ -80,18 +79,12 @@ const ModalAddTransaction = () => {
       window.removeEventListener('keydown', handleKeydown);
     };
   }, [dispatch]);
-  // new Date().toISOString().substring(0, 10)
+
   return createPortal(
     <div className={style.overlay} onClick={overlayClick}>
       <div className={style.modal}>
         <Formik
-          initialValues={{
-            type: 'EXPENSE',
-            categoryId: incomeCategory.id,
-            amount: '',
-            transactionDate: new Date().toISOString().substring(0, 10),
-            comment: '',
-          }}
+          initialValues={initialValues}
           validationSchema={validationSchema}
           onSubmit={handleSubmitAddTransaction}
         >
@@ -100,48 +93,53 @@ const ModalAddTransaction = () => {
               <Form className={style.form}>
                 <h1 className={style.title}> Add transaction</h1>
                 <Typography>Income</Typography>
+
                 <Field
-                  component={Switch}
-                  defaultChecked={true}
-                  // type="checkbox"
+                  component={MaterialUISwitch}
+                  defaultChecked
                   name="type"
                   onChange={e => {
                     if (e.target.checked) {
                       values.type = 'EXPENSE';
                       e.target.value = 'EXPENSE';
-                    } else values.type = 'INCOME';
-                    e.target.value = 'INCOME';
+                      setType('EXPENSE');
+                    } else if (!e.target.checked) {
+                      values.type = 'INCOME';
+                      e.target.value = 'INCOME';
+                      setType('INCOME');
+                    }
                   }}
-                  inputProps={{ 'aria-label': 'controlled' }}
-                />
+                ></Field>
+
                 <Typography>Expense</Typography>
                 <ErrorMessage name="type" />
-                {values.type === 'EXPENSE' && (
+
+                {type === 'EXPENSE' && (
                   <Field
-                    component="select"
+                    component={Select}
+                    defaultValue=""
                     name="categoryId"
                     onChange={e => {
+                      console.log(values.categoryId);
                       values.categoryId = e.target.value;
                     }}
                     className={style.selectInput}
                   >
-                    <option
+                    <MenuItem
                       value={incomeCategory.id}
                       className={style.firstSelectItem}
-                      disabled
-                      hidden
                     >
                       Select a category
-                    </option>
+                    </MenuItem>
                     {expenseCategories.length !== 0 &&
                       expenseCategories.map(category => (
-                        <option
+                        <MenuItem
                           key={category.id}
                           value={category.id}
                           className={style.selectItem}
                         >
                           {category.name}{' '}
-                        </option>
+                        </MenuItem>
                       ))}
                   </Field>
                 )}
@@ -149,34 +147,17 @@ const ModalAddTransaction = () => {
                   type="number"
                   name="amount"
                   className={style.amountInput}
+                  // onChange={e => {
+                  //   console.log(e.target.value);
+                  //   setAmount(e.target.value);
+                  // }}
                   placeholder="0.00"
                 />
                 <ErrorMessage name="amount" />
-                <Datetime
-                  renderInput={(props, openCalendar, closeCalendar) => (
-                    <label
-                      style={{ position: 'relative' }}
-                      onClick={closeCalendar}
-                    >
-                      {' '}
-                      <input
-                        {...props}
-                        onChange={closeCalendar}
-                        className={style.dateInput}
-                      />
-                      <svg className={style.dateIcon}>
-                        <use href={sprite + '#calendar'}></use>
-                      </svg>
-                    </label>
-                  )}
-                  dateFormat="YYYY-MM-DD"
-                  timeFormat={false}
-                  initialValue={new Date()}
+                <Field
+                  component={DatetimeAddTransaction}
                   onChange={e => {
-                    console.log(e);
                     values.transactionDate = e.toISOString().substring(0, 10);
-
-                    console.log(values);
                   }}
                 />
                 <ErrorMessage name="transactionDate" />

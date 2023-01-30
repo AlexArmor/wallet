@@ -1,7 +1,7 @@
 <svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <defs>
 <symbol id="minus" viewBox="0 0 320 32">
-<path fill="none" stroke="#fff" style="stroke: var(--color1, #fff)" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="32" d="M0 16l320-0"></path>
+<path fill="#4a56e2" stroke="#4a56e2" style="stroke: var(--color1, #4a56e2)" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="32" d="M0 16l320-0"></path>
 </symbol>
 <symbol id="dollar" viewBox="0 0 32 32">
 <path fill="#fff" style="fill: var(--color1, #fff)" d="M8.828 3.862h14.345c1.828 0 3.31 1.482 3.31 3.31v14.345c0 1.828-1.482 3.31-3.31 3.31h-14.345c-1.828 0-3.31-1.482-3.31-3.31v-14.345c0-1.828 1.482-3.31 3.31-3.31z"></path>

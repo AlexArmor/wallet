@@ -19,11 +19,10 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(getCurrentUser());
-    dispatch(getTransactionCategories());
   }, [dispatch]);
 
   return isRefreshing ? (
-    <Loader/>
+    <Loader />
   ) : (
     <>
       <Routes>
