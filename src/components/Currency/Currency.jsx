@@ -38,27 +38,29 @@ export const Currency = () => {
       {currencyLoading ? (
         <p>Loading process</p>
       ) : (
-        <table className={css.tableCurrency}>
-          <thead className={css.tableHead}>
-            <tr className={css.tableTitle}>
-              <th className={css.tableItemHead}>Currency</th>
-              <th className={css.tableItemHead}>Purchase</th>
-              <th className={css.tableItemHead}>Sale</th>
-            </tr>
-          </thead>
-          <tbody className={css.tableBody}>
-            <tr className={css.tableList}>
-              <td className={css.tableItem}>USD</td>
-              <td className={css.tableItem}>{usd.rateBuy.toFixed(2)}</td>
-              <td className={css.tableItem}>{usd.rateSell.toFixed(2)}</td>
-            </tr>
-            <tr className={css.tableList}>
-              <td className={css.tableItem}>EUR</td>
-              <td className={css.tableItem}>{eur.rateBuy.toFixed(2)}</td>
-              <td className={css.tableItem}>{eur.rateSell.toFixed(2)}</td>
-            </tr>
-          </tbody>
-        </table>
+        <div className={css.wrapTable}>
+          <table className={css.tableCurrency}>
+            <thead className={css.tableHead}>
+              <tr className={css.tableTitle}>
+                <th className={css.tableItemHead}>Currency</th>
+                <th className={css.tableItemHead}>Purchase</th>
+                <th className={css.tableItemHead}>Sale</th>
+              </tr>
+            </thead>
+            <tbody className={css.tableBody}>
+              <tr className={css.tableList}>
+                <td className={css.tableItem}>USD</td>
+                <td className={css.tableItem}>{usd.rateBuy.toFixed(2)}</td>
+                <td className={css.tableItem}>{usd.rateSell.toFixed(2)}</td>
+              </tr>
+              <tr className={css.tableList}>
+                <td className={css.tableItem}>EUR</td>
+                <td className={css.tableItem}>{eur.rateBuy.toFixed(2)}</td>
+                <td className={css.tableItem}>{eur.rateSell.toFixed(2)}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       )}
     </>
   );
