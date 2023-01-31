@@ -10,8 +10,11 @@ import { MaterialUISwitch } from './SwitchModalComponent';
 import { TextareaAutosize, Typography } from '@mui/material';
 import { DatetimeAddTransaction } from './DatetimeAddTransaction';
 
+import { GrClose } from 'react-icons/gr';
+
 // import { SelectAddTransaction } from './SelectAddTransaction';
 import { UnstyledSelectSimple } from './SelectAddTransaction';
+import Media from 'react-media';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -51,6 +54,7 @@ const ModalAddTransaction = () => {
   };
 
   const handleSubmitAddTransaction = (value, actions) => {
+    console.log('Hi');
     const dataForRequest = {
       type: value.type,
       amount: value.type === 'EXPENSE' ? -value.amount : value.amount,
@@ -90,6 +94,20 @@ const ModalAddTransaction = () => {
   return createPortal(
     <div className={style.overlay} onClick={overlayClick}>
       <div className={style.modal}>
+        <Media
+          query="(min-width: 767px)"
+          render={() => (
+            <button
+              type="button"
+              className={style.closeBtn}
+              onClick={() => {
+                dispatch(toggleModalAddTransactionOpen());
+              }}
+            >
+              <GrClose />
+            </button>
+          )}
+        />
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
@@ -102,6 +120,7 @@ const ModalAddTransaction = () => {
                 <div className={style.toggleTypeBlock}>
                   {' '}
                   <Typography
+                    className={style.typeItem}
                     sx={{ color: type === 'INCOME' ? '#24cca7 ' : '#000000' }}
                   >
                     Income
@@ -124,6 +143,7 @@ const ModalAddTransaction = () => {
                     }}
                   ></Field>
                   <Typography
+                    className={style.typeItem}
                     sx={{ color: type === 'EXPENSE' ? '#ff6596' : '#000000' }}
                   >
                     Expense
@@ -137,37 +157,61 @@ const ModalAddTransaction = () => {
                     onChange={handleSetCatedory}
                   ></Field>
                 )}
-                <Field
-                  type="number"
-                  name="amount"
-                  className={style.amountInput}
-                  placeholder="0.00"
-                ></Field>
-                {errors.amount && touched.amount && (
-                  <span className={style.errorAmountMessage}>
-                    {errors.amount}
-                  </span>
-                )}
-                <ErrorMessage name="transactionDate" />
-                <Field
-                  className={style.dateInput}
-                  component={DatetimeAddTransaction}
-                  onChange={e => {
-                    console.log(values);
-                    values.transactionDate = e.toISOString().substring(0, 10);
-                  }}
-                ></Field>
-                <Field
-                  component={TextareaAutosize}
-                  minRows={3}
-                  onChange={e => {
-                    values.comment = e.target.value;
-                  }}
-                  name="comment"
-                  className={style.commentInput}
-                  placeholder="Comment"
+                <div className={style.amountDateBlock}>
+                  {' '}
+                  <label className={style.amountBlock}>
+                    <Field
+                      type="number"
+                      name="amount"
+                      className={style.amountInput}
+                      placeholder="0.00"
+                    ></Field>
+                    {errors.amount && touched.amount && (
+                      <span name="amount" className={style.errorMessage}>
+                        {errors.amount}
+                      </span>
+                    )}
+                  </label>
+                  <Field
+                    className={style.dateInput}
+                    component={DatetimeAddTransaction}
+                    onChange={e => {
+                      console.log(values);
+                      values.transactionDate = e.toISOString().substring(0, 10);
+                    }}
+                  ></Field>
+                </div>
+
+                <Media
+                  query="(max-width: 766px)"
+                  render={() => (
+                    <Field
+                      component={TextareaAutosize}
+                      minRows={3}
+                      onChange={e => {
+                        values.comment = e.target.value;
+                      }}
+                      name="comment"
+                      className={style.commentInput}
+                      placeholder="Comment"
+                    />
+                  )}
                 />
-                <ErrorMessage name="comment" />
+
+                <Media
+                  query="(min-width: 767px)"
+                  render={() => (
+                    <Field
+                      component={TextareaAutosize}
+                      onChange={e => {
+                        values.comment = e.target.value;
+                      }}
+                      name="comment"
+                      className={style.commentInput}
+                      placeholder="Comment"
+                    />
+                  )}
+                />
                 <button type="submit" className={style.btnAgree}>
                   ADD
                 </button>

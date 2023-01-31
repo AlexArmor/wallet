@@ -8,7 +8,7 @@ export const DatetimeAddTransaction = props => {
       {...props}
       renderInput={(props, openCalendar, closeCalendar) => (
         <label
-          style={{ position: 'relative' }}
+          style={{ position: 'relative', width: '100%', display: 'block' }}
           onClick={() => {
             closeCalendar();
           }}
