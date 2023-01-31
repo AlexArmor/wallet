@@ -10,6 +10,7 @@ const initialState = {
   totalBalance: '',
   data: [],
   categories: [],
+  isLoading: false,
 };
 const transactionSlice = createSlice({
   name: 'finance',
@@ -18,6 +19,7 @@ const transactionSlice = createSlice({
   extraReducers: {
     [getAllTransaction.fulfilled](state, action) {
       state.data = action.payload;
+      state.isLoading = false;
     },
     [addTransaction.fulfilled](state, action) {
       state.data.push(action.payload);
@@ -32,6 +34,13 @@ const transactionSlice = createSlice({
     [getTransactionCategories.fulfilled](state, action) {
       state.categories = action.payload;
     },
+    [getAllTransaction.pending](state) {
+      state.isLoading = true;
+    },
+    [getAllTransaction.rejected](state) {
+      state.isLoading = false;
+    },
+    
   },
 });
 export const transactionReducer = transactionSlice.reducer;
