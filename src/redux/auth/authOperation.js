@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 // axios.defaults.baseURL = 'https://wallet.goit.ua/';
 export const instanceRegister = axios.create({
   baseURL: 'https://wallet.goit.ua/',
@@ -27,7 +27,19 @@ export const register = createAsyncThunk(
       token.set(data.token);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      if (error.message === `Request failed with status code 409`) {
+        return thunkAPI.rejectWithValue(
+          Notify.failure('User with this email address already exists!', {
+            width: '320px',
+            fontSize: '16px',
+            useFontAwesome: true,
+            useIcon: false,
+            failure: {
+              background: '#ff6596',
+            },
+          })
+        );
+      }
     }
   }
 );
@@ -43,7 +55,20 @@ export const login = createAsyncThunk(
       token.set(data.token);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(
+        Notify.failure(
+          'Wrong username or password! Please check your details and try again.',
+          {
+            width: '320px',
+            fontSize: '16px',
+            useFontAwesome: true,
+            useIcon: false,
+            failure: {
+              background: '#ff6596',
+            },
+          }
+        )
+      );
     }
   }
 );
