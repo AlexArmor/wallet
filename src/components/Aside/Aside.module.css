@@ -1,0 +1,30 @@
+.aside {
+  margin-bottom: 32px;
+}
+
+@media screen and (min-width: 768px) {
+  .aside {
+    padding-top: 40px;
+    display: flex;
+    gap: 32px;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .aside {
+    display: block;
+    margin-bottom: 0;
+  }
+  .aside::before {
+    content: '';
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 37%;
+    border: 1px solid #e7e5f2;
+    box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
+      1px 0px 0px rgba(255, 255, 255, 0.6);
+  }
+}

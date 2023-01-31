@@ -1,9 +1,9 @@
 .overlay {
   position: absolute;
-  top: 0;
+  top: 60px;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 720px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,9 +12,9 @@
 .modal {
   padding: 10px;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   gap: 20px;
   width: 540px;
   height: 603px;
@@ -22,27 +22,94 @@
   background-color: var(--main-white-color);
   border-radius: 20px;
 }
-@media screen and (max-width: 480px) {
-  .modal {
-    width: 100%;
-    height: 100%;
-    border-radius: 0;
-  }
-}
-@media screen and (min-width: 480px) and (max-width: 767px) {
-  .modal {
-    width: 460px;
-    height: 90vh;
-    border-radius: 20px;
-  }
-}
+
 .form {
   display: flex;
   flex-direction: column;
 }
 .title {
+  margin: 20px auto 40px;
+  text-align: center;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: calc(45 / 30);
+}
+.toggleTypeBlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.amountInput {
+  height: 32px;
+  min-width: 280px;
+  padding: 8px 20px;
+  margin: 0 auto 40px;
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: calc(27 / 18);
+  border: none;
+  border-bottom: 1px solid var(--main-light-color);
+
+  height: 32px;
+}
+.amountInput::-webkit-outer-spin-button,
+.amountInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* .errorAmountMessage {
+  position: absolute;
+} */
+.dateInput {
+  height: 32px;
+  min-width: 280px;
+  margin: 0 auto 40px;
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: calc(27 / 18);
+  border: none;
+  border-bottom: 1px solid var(--main-light-color);
+
+  height: 32px;
+}
+.dateIcon {
+  width: 18px;
+  height: 20px;
+  position: absolute;
+  top: 3px;
+  right: 19px;
+}
+[type='date']::-webkit-inner-spin-button {
+  display: none;
+}
+[type='date']::-webkit-calendar-picker-indicator {
+  display: none;
+}
+.commentInput {
+  height: 84px;
+  min-width: 280px;
+  margin: 0 auto 40px;
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: calc(27 / 18);
+  border: none;
+  border-bottom: 1px solid var(--main-light-color);
+
+  height: 32px;
 }
 .btnAgree {
+  margin-bottom: 20px;
   padding: 12px 0;
   background-color: var(--main-white-color);
   width: 300px;
@@ -68,4 +135,22 @@
   font-size: 18px;
   line-height: calc(27 / 18);
   border-radius: 20px;
+}
+@media screen and (max-width: 480px) {
+  .modal {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  }
+  .selectInput {
+    min-width: 280px;
+    width: calc(100% - 20px);
+  }
+}
+@media screen and (min-width: 480px) and (max-width: 767px) {
+  .modal {
+    width: 460px;
+    height: 90vh;
+    border-radius: 20px;
+  }
 }
