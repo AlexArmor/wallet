@@ -43,6 +43,26 @@
   height: 34px;
 }
 
+.label::before {
+  content: '';
+  position: relative;
+  display: block;
+  width: 24px;
+  height: 24px;
+  top: 25px;
+  left: 13px;
+}
+
+.labelEmail::before {
+  background-image: url(../../icons/email.svg);
+}
+
+.labelLock::before {
+  background-image: url(../../icons/lock.svg);
+}
+.labelName::before {
+  background-image: url(../../icons/account_box.svg);
+}
 .input {
   width: 100%;
   height: 100%;
@@ -61,23 +81,17 @@
   background-position: 14px 0;
 }
 
-.inputEmail {
-  background-image: url(../../icons/email.svg);
-}
-
-.inputLock {
-  background-image: url(../../icons/lock.svg);
-}
-.inputName {
-  background-image: url(../../icons/account_box.svg);
-}
-
 .input::placeholder {
   font-family: 'Circe';
   font-weight: 400;
   font-size: 18px;
   line-height: calc(27 / 18);
   color: var(--main-light-color);
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: inset 0 0 0 50px white;
+  -webkit-text-fill-color: black;
 }
 
 .errorMessage {
@@ -134,4 +148,19 @@
   .btn {
     width: 280px;
   }
+}
+
+.spanWrap {
+  width: 410px;
+  height: 4px;
+  border-radius: 10px;
+  background-color: #e5f1ef;
+}
+
+.span {
+  display: block;
+  height: 100%;
+  border-radius: 10px;
+  background-color: #27c8ad;
+  box-shadow: 0px 1px 8px rgba(36, 204, 167, 0.5);
 }
