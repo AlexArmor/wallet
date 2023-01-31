@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import Media from 'react-media';
 import Table from 'components/Table/Table';
 import { MobileTransactionsList } from 'components/MobileTransationsList/MobileTransactionsList';
+import Balance from 'components/Balance/Balance';
 
 export default function Home() {
   const isModalAddTransactionOpen = useSelector(
@@ -16,6 +17,9 @@ export default function Home() {
       <Media query="(max-width: 767px)" render={() => <MobileTransactionsList/>}/>
       <Media query="(min-width: 768px)" render={() => <Table/>}/>
       <ButtonAddTransaction/>
+      <Media query="(max-width: 767px)" render={() => <Balance />} />
+      <Table query="(max-device-width: 768px)" />
+      <ButtonAddTransaction />
       {isModalAddTransactionOpen && <ModalAddTransaction />}
     </>
   );

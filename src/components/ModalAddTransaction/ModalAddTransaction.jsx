@@ -7,8 +7,11 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import style from './ModalAddTransaction.module.css';
 import * as yup from 'yup';
 import { MaterialUISwitch } from './SwitchModalComponent';
-import { Typography, Select, MenuItem } from '@mui/material';
+import { TextareaAutosize, Typography } from '@mui/material';
 import { DatetimeAddTransaction } from './DatetimeAddTransaction';
+
+// import { SelectAddTransaction } from './SelectAddTransaction';
+import { UnstyledSelectSimple } from './SelectAddTransaction';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -41,7 +44,11 @@ const ModalAddTransaction = () => {
 
   const [type, setType] = useState('EXPENSE');
 
-  // const [amount, setAmount] = useState(0);
+  const [categoryId, setCategoryId] = useState('');
+
+  const handleSetCatedory = id => {
+    setCategoryId(id);
+  };
 
   const handleSubmitAddTransaction = (value, actions) => {
     const dataForRequest = {
@@ -49,8 +56,8 @@ const ModalAddTransaction = () => {
       amount: value.type === 'EXPENSE' ? -value.amount : value.amount,
       categoryId:
         value.type === 'EXPENSE'
-          ? value.categoryId !== incomeCategory.id
-            ? value.categoryId
+          ? categoryId !== incomeCategory.id
+            ? categoryId
             : expenseCategories[0].id
           : incomeCategory.id,
       comment: value.comment,
@@ -88,81 +95,74 @@ const ModalAddTransaction = () => {
           validationSchema={validationSchema}
           onSubmit={handleSubmitAddTransaction}
         >
-          {({ values }) => {
+          {({ values, errors, touched }) => {
             return (
               <Form className={style.form}>
                 <h1 className={style.title}> Add transaction</h1>
-                <Typography>Income</Typography>
-
-                <Field
-                  component={MaterialUISwitch}
-                  defaultChecked
-                  name="type"
-                  onChange={e => {
-                    if (e.target.checked) {
-                      values.type = 'EXPENSE';
-                      e.target.value = 'EXPENSE';
-                      setType('EXPENSE');
-                    } else if (!e.target.checked) {
-                      values.type = 'INCOME';
-                      e.target.value = 'INCOME';
-                      setType('INCOME');
-                    }
-                  }}
-                ></Field>
-
-                <Typography>Expense</Typography>
+                <div className={style.toggleTypeBlock}>
+                  {' '}
+                  <Typography
+                    sx={{ color: type === 'INCOME' ? '#24cca7 ' : '#000000' }}
+                  >
+                    Income
+                  </Typography>
+                  <Field
+                    component={MaterialUISwitch}
+                    defaultChecked
+                    name="type"
+                    onChange={e => {
+                      console.log(categoryId);
+                      if (e.target.checked) {
+                        values.type = 'EXPENSE';
+                        e.target.value = 'EXPENSE';
+                        setType('EXPENSE');
+                      } else if (!e.target.checked) {
+                        values.type = 'INCOME';
+                        e.target.value = 'INCOME';
+                        setType('INCOME');
+                      }
+                    }}
+                  ></Field>
+                  <Typography
+                    sx={{ color: type === 'EXPENSE' ? '#ff6596' : '#000000' }}
+                  >
+                    Expense
+                  </Typography>
+                </div>
                 <ErrorMessage name="type" />
-
                 {type === 'EXPENSE' && (
                   <Field
-                    component={Select}
-                    defaultValue=""
+                    component={UnstyledSelectSimple}
                     name="categoryId"
-                    onChange={e => {
-                      console.log(values.categoryId);
-                      values.categoryId = e.target.value;
-                    }}
-                    className={style.selectInput}
-                  >
-                    <MenuItem
-                      value={incomeCategory.id}
-                      className={style.firstSelectItem}
-                    >
-                      Select a category
-                    </MenuItem>
-                    {expenseCategories.length !== 0 &&
-                      expenseCategories.map(category => (
-                        <MenuItem
-                          key={category.id}
-                          value={category.id}
-                          className={style.selectItem}
-                        >
-                          {category.name}{' '}
-                        </MenuItem>
-                      ))}
-                  </Field>
+                    onChange={handleSetCatedory}
+                  ></Field>
                 )}
                 <Field
                   type="number"
                   name="amount"
                   className={style.amountInput}
-                  // onChange={e => {
-                  //   console.log(e.target.value);
-                  //   setAmount(e.target.value);
-                  // }}
                   placeholder="0.00"
-                />
-                <ErrorMessage name="amount" />
-                <Field
-                  component={DatetimeAddTransaction}
-                  onChange={e => {
-                    values.transactionDate = e.toISOString().substring(0, 10);
-                  }}
-                />
+                ></Field>
+                {errors.amount && touched.amount && (
+                  <span className={style.errorAmountMessage}>
+                    {errors.amount}
+                  </span>
+                )}
                 <ErrorMessage name="transactionDate" />
                 <Field
-                  type="text"
+                  className={style.dateInput}
+                  component={DatetimeAddTransaction}
+                  onChange={e => {
+                    console.log(values);
+                    values.transactionDate = e.toISOString().substring(0, 10);
+                  }}
+                ></Field>
+                <Field
+                  component={TextareaAutosize}
+                  minRows={3}
+                  onChange={e => {
+                    values.comment = e.target.value;
+                  }}
                   name="comment"
                   className={style.commentInput}
                   placeholder="Comment"
