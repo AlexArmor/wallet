@@ -1,0 +1,43 @@
+.balanceContainer {
+  margin: 0 auto;
+  margin-bottom: 32px;
+  padding: 8px 32px 12px 32px;
+
+  width: 280px;
+  background-color: var(--main-white-color);
+  border-radius: 30px;
+}
+.balanceText {
+  margin-bottom: 12px;
+
+  font-family: 'Circe';
+  color: var(--main-light-color);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.balanceItem {
+  font-family: 'Poppins';
+  color: var(--main-black-color);
+  font-weight: 400;
+  font-size: 30px;
+}
+.balanceValue,
+.balanceIcon {
+  font-weight: 700;
+}
+@media screen and (min-width: 768px) {
+  .balanceContainer {
+    margin: 0;
+    width: 336px;
+
+    padding-left: 40px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .balanceContainer {
+    margin-bottom: 34px;
+    width: 395px;
+  }
+}
