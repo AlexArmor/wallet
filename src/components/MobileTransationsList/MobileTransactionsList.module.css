@@ -1,0 +1,108 @@
+.tableListMobile {
+    font-family: 'Circe';
+    line-height: 1.5;
+    max-width: 280px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background-color: #E7EAF2;
+    margin-top: 32px;
+  }
+
+  .containerMobile {
+    margin: 0 auto;
+  }
+
+  .cardListItem {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-radius: 10px;
+  }
+
+  /* .cardListItemList {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  } */
+  
+  .tableItemMobile {
+    background-color: var(--main-white-color);
+    border-bottom: 1px solid var(--main-light-color); 
+  }
+  .tableItemMobile:first-child {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  .tableItemMobile:last-child {
+    border-bottom: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+
+  .tableItemMobileBlock {
+    border-left: 5px solid var(--accent-secondary-color);
+    width: 280px;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .tableItemMobileBlockGreen {
+    border-left: 5px solid var(--accent-color);
+    width: 280px;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .tableItemMobile:first-child > .tableItemMobileBlock {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  .tableItemMobile:first-child > .tableItemMobileBlockGreen {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  
+  
+  .tableItemMobile:last-child > .tableItemMobileBlock {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  .tableItemMobile:last-child > .tableItemMobileBlockGreen {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+
+ /*  .tableItemMobile::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 100%;
+    background-color: var(--main-light-color);
+    position: relative;
+    top: 50px;
+  } */
+
+  .itemNameMobile {
+    font-weight: 700;
+    font-size: 18px;
+  
+    color: var(--main-black-color);
+  }
+
+  .itemSumIncome {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--accent-color);
+  }
+  .itemSumExpense {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--accent-secondary-color);
+  }
+  .itemValueMobile {
+    font-weight: 400;
+    font-size: 16px;
+  }
+  

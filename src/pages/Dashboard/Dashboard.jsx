@@ -19,11 +19,11 @@ export default function Dashboard() {
         <div>
           <Aside />
         </div>
-        <div>
+      
           <Suspense fallback={<Loader />}>
             <Outlet />
           </Suspense>
-        </div>
+        
       </section>
     </>
   );

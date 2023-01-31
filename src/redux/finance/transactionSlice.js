@@ -16,9 +16,6 @@ const transactionSlice = createSlice({
   initialState: initialState,
   reducers: {},
   extraReducers: {
-   /*  [getTotalBalance.fulfilled](state, action) {
-      state.totalBalance = action.payload;
-    }, */
     [getAllTransaction.fulfilled](state, action) {
       state.data = action.payload;
     },
