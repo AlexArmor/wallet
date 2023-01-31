@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTransaction } from 'redux/finance/transactionOperation';
 import { createPortal } from 'react-dom';
@@ -6,7 +6,12 @@ import { toggleModalAddTransactionOpen } from 'redux/global/globalSlice';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import style from './ModalAddTransaction.module.css';
 import * as yup from 'yup';
-import Datetime from 'react-datetime';
+import { MaterialUISwitch } from './SwitchModalComponent';
+import { TextareaAutosize, Typography } from '@mui/material';
+import { DatetimeAddTransaction } from './DatetimeAddTransaction';
+
+import { SelectAddTransaction } from './SelectAddTransaction';
+import { UnstyledSelectSimple } from './SelectAddTransaction';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -20,53 +25,46 @@ const validationSchema = yup.object().shape({
 
 const ModalAddTransaction = () => {
   const dispatch = useDispatch();
-
   const categories = useSelector(state => state.finance.categories);
   const expenseCategories = categories.filter(
     category => category.type !== 'INCOME'
   );
-  // const [dataTransaction, setDataTransaction] = useState(null);
-  // const [type, setType] = useState('EXPENSE');
-  // const [date, setDate] = useState('');
-  // const [category, setCategory] = useState('');
-  // const [comment, setComment] = useState('');
-  // const [amount, setAmount] = useState('');
-  // const saveDataTransaction = e => {
-  //   switch (e.currentTarget.name) {
-  //     case 'date':
-  //       setDate(e.currentTarget.value);
-  //       break;
-  //     case 'type':
-  //       setType(e.currentTarget.value);
-  //       break;
-  //     case 'category':
-  //       setCategory(e.currentTarget.value);
-  //       break;
-  //     case 'comment':
-  //       setComment(e.currentTarget.value);
-  //       break;
-  //     case 'amount':
-  //       setAmount(Number(e.currentTarget.value));
-  //       break;
-  //     default:
-  //       return;
-  //   }
-  // };
+
+  const incomeCategory = categories.find(
+    category => category.type === 'INCOME'
+  );
+
+  const initialValues = {
+    type: 'EXPENSE',
+    categoryId: incomeCategory.id,
+    amount: '',
+    transactionDate: new Date().toISOString().substring(0, 10),
+    comment: '',
+  };
+
+  const [type, setType] = useState('EXPENSE');
+
+  const [categoryId, setCategoryId] = useState('');
+
+  const handleSetCatedory = id => {
+    setCategoryId(id);
+  };
 
   const handleSubmitAddTransaction = (value, actions) => {
-    const dataForRequest = { ...value };
-
-    if (dataForRequest.type === 'EXPENSE') {
-      dataForRequest.amount = -dataForRequest.amount;
-    }
-    if (dataForRequest.type === 'INCOME') {
-      dataForRequest.categoryId = categories.find(
-        category => category.type === 'INCOME'
-      ).id;
-    }
+    const dataForRequest = {
+      type: value.type,
+      amount: value.type === 'EXPENSE' ? -value.amount : value.amount,
+      categoryId:
+        value.type === 'EXPENSE'
+          ? categoryId !== incomeCategory.id
+            ? categoryId
+            : expenseCategories[0].id
+          : incomeCategory.id,
+      comment: value.comment,
+      transactionDate: value.transactionDate,
+    };
 
     dispatch(addTransaction(dataForRequest));
-
     actions.resetForm();
     dispatch(toggleModalAddTransactionOpen());
   };
@@ -92,66 +90,83 @@ const ModalAddTransaction = () => {
   return createPortal(
     <div className={style.overlay} onClick={overlayClick}>
       <div className={style.modal}>
-        {' '}
         <Formik
-          initialValues={{
-            type: 'EXPENSE',
-            categoryId: categories[0].id,
-            amount: '',
-            transactionDate: new Date().toISOString().substring(0, 10),
-            comment: '',
-          }}
+          initialValues={initialValues}
           validationSchema={validationSchema}
           onSubmit={handleSubmitAddTransaction}
         >
-          {({ values }) => {
+          {({ values, errors, touched }) => {
             return (
               <Form className={style.form}>
                 <h1 className={style.title}> Add transaction</h1>
-                <div role="group" aria-labelledby="my-radio-group">
+                <div className={style.toggleTypeBlock}>
                   {' '}
-                  <label>
-                    {' '}
-                    Income <Field
-                      name="type"
-                      type="radio"
-                      value="INCOME"
-                    />{' '}
-                  </label>
-                  <label>
-                    <Field name="type" type="radio" value="EXPENSE" /> Expense
-                  </label>
+                  <Typography
+                    sx={{ color: type === 'INCOME' ? '#24cca7 ' : '#000000' }}
+                  >
+                    Income
+                  </Typography>
+                  <Field
+                    component={MaterialUISwitch}
+                    defaultChecked
+                    name="type"
+                    onChange={e => {
+                      console.log(categoryId);
+                      if (e.target.checked) {
+                        values.type = 'EXPENSE';
+                        e.target.value = 'EXPENSE';
+                        setType('EXPENSE');
+                      } else if (!e.target.checked) {
+                        values.type = 'INCOME';
+                        e.target.value = 'INCOME';
+                        setType('INCOME');
+                      }
+                    }}
+                  ></Field>
+                  <Typography
+                    sx={{ color: type === 'EXPENSE' ? '#ff6596' : '#000000' }}
+                  >
+                    Expense
+                  </Typography>
                 </div>
                 <ErrorMessage name="type" />
-                {values.type === 'EXPENSE' && (
-                  <Field name="categoryId" as="select">
-                    <option value="" disabled>
-                      {' '}
-                      Not selected
-                    </option>
-                    {expenseCategories.length !== 0 &&
-                      expenseCategories.map(category => (
-                        <option key={category.id} value={category.id}>
-                          {category.name}{' '}
-                        </option>
-                      ))}
-                  </Field>
+                {type === 'EXPENSE' && (
+                  <Field
+                    component={UnstyledSelectSimple}
+                    name="categoryId"
+                    onChange={handleSetCatedory}
+                  ></Field>
                 )}
-                <Datetime
-                  inputProps={{
-                    name: 'transactionDate',
-                  }}
-                  dateFormat="YYYY-MM-DD"
-                  timeFormat={false}
-                  initialValue={new Date()}
-                  onChange={({ _d }) => {
-                    values.transactionDate = _d.toISOString().substring(0, 10);
-                  }}
-                />
+                <Field
+                  type="number"
+                  name="amount"
+                  className={style.amountInput}
+                  placeholder="0.00"
+                ></Field>
+                {errors.amount && touched.amount && (
+                  <span className={style.errorAmountMessage}>
+                    {errors.amount}
+                  </span>
+                )}
                 <ErrorMessage name="transactionDate" />
-                <Field type="number" name="amount" />
-                <ErrorMessage name="amount" />
-                <Field type="text" name="comment" />
+                <Field
+                  className={style.dateInput}
+                  component={DatetimeAddTransaction}
+                  onChange={e => {
+                    console.log(values);
+                    values.transactionDate = e.toISOString().substring(0, 10);
+                  }}
+                ></Field>
+                <Field
+                  component={TextareaAutosize}
+                  minRows={3}
+                  onChange={e => {
+                    values.comment = e.target.value;
+                  }}
+                  name="comment"
+                  className={style.commentInput}
+                  placeholder="Comment"
+                />
                 <ErrorMessage name="comment" />
                 <button type="submit" className={style.btnAgree}>
                   ADD

@@ -5,8 +5,10 @@ import styles from './Header.module.css';
 import ModalLogout from 'components/ModalLogout/ModalLogout';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleModalLogoutOpen } from 'redux/global/globalSlice';
+import { selectUser } from 'redux/auth/selectors';
 
 export const Header = () => {
+  const user = useSelector(selectUser)
   const isModalLogoutOpen = useSelector(
     state => state.global.isModalLogoutOpen
   );
@@ -27,7 +29,7 @@ export const Header = () => {
         </Link>
       </div>
       <div className={styles.headerLogOutWrapper}>
-        <p className={styles.headerLogOutName}>Name</p>
+        <p className={styles.headerLogOutName}>{user.username}</p>
         <button
           type="button"
           className={styles.headerLogOutBtn}
