@@ -1,6 +1,10 @@
+.loaderWrap {
+  position: relative;
+  width: 280px;
+}
 .wrapTable {
   background-color: var(--icon-color);
-  width: 280px;
+  width: 100%;
   padding-bottom: 52px;
   border-radius: 30px;
   background-repeat: no-repeat, no-repeat;
@@ -36,8 +40,11 @@
 }
 
 @media screen and (min-width: 768px) {
-  .wrapTable {
+  .loaderWrap {
     width: 336px;
+  }
+  .wrapTable {
+    /* width: 336px; */
     padding-bottom: 56px;
     background-image: url(/src/images/currency-img-tablet.svg),
       linear-gradient(to bottom, var(--icon-color), var(--icon-color));
@@ -48,8 +55,11 @@
 }
 
 @media screen and (min-width: 1280px) {
-  .wrapTable {
+  .loaderWrap {
     width: 393px;
+  }
+  .wrapTable {
+    /* width: 393px; */
     padding-bottom: 179px;
     background-image: url(/src/images/currency-img-desktop.svg),
       linear-gradient(to bottom, var(--icon-color), var(--icon-color));

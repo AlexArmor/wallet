@@ -1,42 +1,67 @@
 import { getCurrency } from 'services/currencyAPI';
 import { useState, useEffect } from 'react';
+import { Loader } from 'components/Loader/Loader';
 import css from './Currency.module.css';
 
 export const Currency = () => {
-  const [usd, setUsd] = useState({ rateBuy: 0, rateSell: 0 });
-  const [eur, setEur] = useState({ rateBuy: 0, rateSell: 0 });
+  const [usd, setUsd] = useState(
+    () => JSON.parse(localStorage.getItem('usd')) ?? { rateBuy: 0, rateSell: 0 }
+  );
+  const [eur, setEur] = useState(
+    () => JSON.parse(localStorage.getItem('eur')) ?? { rateBuy: 0, rateSell: 0 }
+  );
+  const [currencyLoading, setCurrencyLoading] = useState(false);
 
   const UAH_CODE = 980;
   const USD_CODE = 840;
   const EUR_CODE = 978;
-
-  let currencyLoading = false;
-
-  useEffect(() => {
+  const ONE_HOUR = 3600000;
+  const calculateTimeAndSetToLocalStorage = () => {
     getCurrency()
       .then(data => {
-        setUsd(
-          data.find(
-            ({ currencyCodeA, currencyCodeB }) =>
-              currencyCodeA === USD_CODE && currencyCodeB === UAH_CODE
-          )
+        setCurrencyLoading(false);
+        const usdFind = data.find(
+          ({ currencyCodeA, currencyCodeB }) =>
+            currencyCodeA === USD_CODE && currencyCodeB === UAH_CODE
         );
-        setEur(
-          data.find(
-            ({ currencyCodeA, currencyCodeB }) =>
-              currencyCodeA === EUR_CODE && currencyCodeB === UAH_CODE
-          )
+        const eurFind = data.find(
+          ({ currencyCodeA, currencyCodeB }) =>
+            currencyCodeA === EUR_CODE && currencyCodeB === UAH_CODE
         );
+        const actualTime = new Date();
+        usdFind.date = actualTime.getTime();
+        eurFind.date = actualTime.getTime();
+        localStorage.setItem('usd', JSON.stringify(usdFind));
+        localStorage.setItem('eur', JSON.stringify(eurFind));
+        setUsd(usdFind);
+        setEur(eurFind);
       })
       .catch(err => {
+        setCurrencyLoading(false);
         console.log(err.message);
       });
+  };
+
+  useEffect(() => {
+    setCurrencyLoading(true);
+    if (JSON.parse(localStorage.getItem('usd')) === null) {
+      calculateTimeAndSetToLocalStorage();
+    } else if (JSON.parse(localStorage.getItem('usd')) !== null) {
+      const { date } = JSON.parse(localStorage.getItem('usd'));
+      const currentDate = new Date();
+      const deltaTime = currentDate.getTime() - date;
+      if (deltaTime > ONE_HOUR) {
+        calculateTimeAndSetToLocalStorage();
+      } else {
+        setCurrencyLoading(false);
+      }
+    }
   }, []);
 
   return (
-    <>
+    <div className={css.loaderWrap}>
       {currencyLoading ? (
-        <p>Loading process</p>
+        <Loader />
       ) : (
         <div className={css.wrapTable}>
           <table className={css.tableCurrency}>
@@ -62,6 +87,6 @@ export const Currency = () => {
           </table>
         </div>
       )}
-    </>
+    </div>
   );
 };
