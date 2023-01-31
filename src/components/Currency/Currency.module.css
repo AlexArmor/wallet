@@ -3,6 +3,7 @@
   width: 280px;
 }
 .wrapTable {
+  margin: 0 auto;
   background-color: var(--icon-color);
   width: 100%;
   padding-bottom: 52px;
@@ -44,7 +45,6 @@
     width: 336px;
   }
   .wrapTable {
-    /* width: 336px; */
     padding-bottom: 56px;
     background-image: url(/src/images/currency-img-tablet.svg),
       linear-gradient(to bottom, var(--icon-color), var(--icon-color));
@@ -59,7 +59,6 @@
     width: 393px;
   }
   .wrapTable {
-    /* width: 393px; */
     padding-bottom: 179px;
     background-image: url(/src/images/currency-img-desktop.svg),
       linear-gradient(to bottom, var(--icon-color), var(--icon-color));
