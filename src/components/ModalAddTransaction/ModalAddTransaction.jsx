@@ -9,10 +9,7 @@ import * as yup from 'yup';
 import { MaterialUISwitch } from './SwitchModalComponent';
 import { TextareaAutosize, Typography } from '@mui/material';
 import { DatetimeAddTransaction } from './DatetimeAddTransaction';
-
 import { GrClose } from 'react-icons/gr';
-
-// import { SelectAddTransaction } from './SelectAddTransaction';
 import { UnstyledSelectSimple } from './SelectAddTransaction';
 import Media from 'react-media';
 
@@ -46,7 +43,6 @@ const ModalAddTransaction = () => {
   };
 
   const [type, setType] = useState('EXPENSE');
-
   const [categoryId, setCategoryId] = useState('');
 
   const handleSetCatedory = id => {

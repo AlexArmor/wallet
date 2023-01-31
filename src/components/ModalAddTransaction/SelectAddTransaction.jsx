@@ -1,135 +1,5 @@
 import * as React from 'react';
 import arrowDown from '../../icons/arrowDown.svg';
-// import { styled } from '@mui/material/styles';
-// import { Switch } from '@mui/material';
-// import { useTheme } from '@mui/material/styles';
-// import OutlinedInput from '@mui/material/OutlinedInput';
-
-// import MenuItem from '@mui/material/MenuItem';
-// import FormControl from '@mui/material/FormControl';
-// import Select from '@mui/material/Select';
-// import { useSelector } from 'react-redux';
-// import style from './ModalAddTransaction.module.css';
-// import { SlArrowDown } from 'react-icons/sl';
-// const ITEM_HEIGHT = 48;
-// const ITEM_PADDING_TOP = 8;
-// const MenuProps = {
-//   PaperProps: {
-//     style: {
-//       backgroundColor: 'red',
-//       fontFamily: 'Circe',
-//       fontStyle: 'normal',
-//       fontWeight: 400,
-//       fontSize: '18px',
-//       lineHeight: 'calc(27 / 18)',
-//       backgroundColor: ' rgba(255, 255, 255, 0.8)',
-//       boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.1)',
-//       borderRadius: '20px',
-//       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-//       width: 250,
-//       scrollbarWidth: 'none',
-//       '::-webkit-scrollbar': {
-//         width: 0,
-//         height: 0,
-//       },
-//     },
-//   },
-// };
-// const CustomItem = styled(MenuItem)(({ theme }) => {
-//   return {
-//     '&.Mui-selected': {
-//       backgroundColor: '#fff',
-//       '&:hover': { backgroundColor: '#fff' },
-//     },
-
-//     // fontFamily: 'Circe',
-//     // fontStyle: 'normal',
-//     // fontWeight: 400,
-//     // fontSize: '18px',
-//     // lineHeight: 'calc(27 / 18)',
-//     backgroundColor: ' rgba(255, 255, 255, 0.7)',
-//     boxShadow: '0px 6px 15px rgba(0, 0, 0, 0.1)',
-
-//     maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-//     width: 250,
-//     '&:hover': { backgroundColor: '#fff' },
-//   };
-// });
-// const CustomInput = styled(OutlinedInput)(({ theme }) => {
-//   return {
-//     '& .MuiOutlinedInput-notchedOutline': {
-//       border: 'none',
-//     },
-//     margin: '0 auto',
-//     fontFamily: 'Circe',
-//     fontStyle: ' normal',
-//     fontWeight: 400,
-//     fontSize: '18px',
-//     lineHeight: 'calc(27 / 18)',
-//     border: 'none',
-//     borderBottom: '1px solid var(--main-light-color)',
-//     color: '#000',
-//     fill: 'var(--main-black-color)',
-//     height: ' 32px',
-//     '&:target': { color: '#000' },
-//   };
-// });
-// const SelectAddTransaction = ({ onChange }) => {
-//   const categories = useSelector(state => state.finance.categories);
-//   const expenseCategories = categories.filter(
-//     category => category.type !== 'INCOME'
-//   );
-//   const [category, setCategory] = React.useState('');
-//      const incomeCategory = categories.find(
-//        category => category.type === 'INCOME'
-//      );
-//      const theme = useTheme();
-//   return (
-//     <div>
-//       <FormControl sx={{ m: 1, width: 300, mt: 3 }}>
-//         <Select
-//           displayEmpty
-//           defaultValue=""
-//           className={style.selectInput}
-//           IconComponent={SlArrowDown}
-//           onChange={e => {
-//             setCategory(e.target.value);
-//             onChange(e.target.value);
-//           }}
-//           input={
-//             <CustomInput
-//               name="categoryId"
-//               sx={{
-//                 color: category === '' ? '#bdbdbd' : '#000',
-//               }}
-//               placeholder="Select a category"
-//             />
-//           }
-//           MenuProps={MenuProps}
-//           inputProps={{ 'aria-label': 'Without label' }}
-//         >
-//           <MenuItem disabled value="">
-//             <em sx={{ color: '#bdbdbd' }}>Select a category</em>
-//           </MenuItem>
-//           {expenseCategories.map(category => (
-//             <CustomItem
-//               sx={{
-//                 '&:hover': { backgroundColor: '#fff' },
-//               }}
-//               key={category.id}
-//               value={category.id}
-//               id={category.id}
-//               className={style.selectItem}
-//             >
-//               {category.name}{' '}
-//             </CustomItem>
-//           ))}
-//         </Select>
-//       </FormControl>
-//     </div>
-//   );
-// };
-// export default SelectAddTransaction;
 import SelectUnstyled, {
   selectUnstyledClasses,
 } from '@mui/base/SelectUnstyled';
@@ -181,6 +51,7 @@ const StyledButton = styled('button')(
         bottom: 8px;
         background-image: url(${arrowDown});
         background-repeat: no-repeat;
+        transform: rotate(180deg);
 
       }
     }
@@ -196,6 +67,7 @@ const StyledButton = styled('button')(
       bottom: 8px;
       background-image: url(${arrowDown});
       background-repeat: no-repeat;
+     
     }
     @media screen and (max-width: 480px) {
      width: calc(100% - 20px);
