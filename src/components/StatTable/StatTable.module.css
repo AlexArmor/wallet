@@ -54,3 +54,14 @@ line-height: calc(24/16);
 .income{
     color: #24CCA7;
 }
+
+.color_icon{
+    display: block;
+    width: 24px;
+    height: 24px;
+}
+
+.label{
+    display: flex;
+    gap: 16px;
+}

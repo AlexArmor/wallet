@@ -1,3 +1,4 @@
+import { toStringWithSymbol } from 'services/addSymbol';
 import css from './StatTable.module.css';
 
 const backgroundColors = [
@@ -31,27 +32,24 @@ export const StatTable = ({ stat }) => {
           {expences.map((el, index) => {
             return (
               <li key={el.name} className={css.row}>
-                <p>
-                  <span
+                <p className={css.label}>
+                  <span className={css.color_icon}
                     style={{
                       backgroundColor: `${backgroundColors[index]}`,
-                      display: 'block',
-                      width: '10px',
-                      height: '10px'
                     }}
                   ></span>
                   {el.name}
                 </p>
-                <p>{el.total}</p>
+                <p>{toStringWithSymbol(el.total, " ").substring(1)}</p>
               </li>
             );
           })}
         </ul>
         <p className={css.summury}>
-          Expenses:<span className={css.expenses}>{sumOfExpences}</span>
+          Expenses:<span className={css.expenses}>{toStringWithSymbol(sumOfExpences, " ").substring(1)}</span>
         </p>
         <p className={css.summury}>
-          Income:<span className={css.income}>{income}</span>
+          Income:<span className={css.income}>{toStringWithSymbol(income, " ")}</span>
         </p>
       </div>
     </>

@@ -8,9 +8,6 @@ const options = {
             display: false
         }
     },
-  layout: {
-      padding: 20
-  }
 }
 
 const backgroundColor = [
@@ -36,13 +33,14 @@ export const Chart = ({stat}) => {
           {
             data: expenceAmounts,
             backgroundColor,
-            borderWidth: 0
+            borderWidth: 0,
+            cutout: 100
           },
         ],
         labels: categories,
       };
 
     return(
-        <Doughnut options={options} data={data} Legend={null}/>
+        <Doughnut options={options} data={data}/>
       )
 }
