@@ -129,6 +129,21 @@ input:-webkit-autofill {
   color: var(--main-white-color);
 }
 
+.spanWrap {
+  width: 280px;
+  height: 4px;
+  border-radius: 10px;
+  background-color: #e5f1ef;
+}
+
+.span {
+  display: block;
+  height: 100%;
+  border-radius: 10px;
+  background-color: #27c8ad;
+  box-shadow: 0px 1px 8px rgba(36, 204, 167, 0.5);
+}
+
 @media screen and (min-width: 768px) {
   .registerForm {
     padding-top: 40px;
@@ -148,19 +163,7 @@ input:-webkit-autofill {
   .btn {
     width: 280px;
   }
-}
-
-.spanWrap {
-  width: 410px;
-  height: 4px;
-  border-radius: 10px;
-  background-color: #e5f1ef;
-}
-
-.span {
-  display: block;
-  height: 100%;
-  border-radius: 10px;
-  background-color: #27c8ad;
-  box-shadow: 0px 1px 8px rgba(36, 204, 167, 0.5);
+  .spanWrap {
+    width: 410px;
+  }
 }

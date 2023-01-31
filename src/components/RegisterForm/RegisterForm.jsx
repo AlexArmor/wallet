@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { register } from 'redux/auth/authOperation';
 import { NavLink } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
@@ -24,7 +24,7 @@ let schema = yup.object().shape({
     .required(),
   passwordConfirm: yup
     .string()
-    .oneOf([yup.ref('password')], 'Пароли не совпадают')
+    .oneOf([yup.ref('password')], 'Passwords do not match! Try again.')
     .required(),
   userName: yup
     .string()
@@ -36,28 +36,28 @@ let schema = yup.object().shape({
 export const RegisterForm = () => {
   const dispatch = useDispatch();
   const [style, setStyle] = useState({ width: '0%' });
-  let passwordValue = '';
-  let passwordConfirmValue = '';
+  const [passwordValue, setPasswordValue] = useState('');
+  const [passwordConfirmValue, setPasswordConfirmValue] = useState('');
 
-  const handleChange = e => {
-    if (e.target.name === 'password') {
-      passwordValue = e.target.value;
-    } else if (e.target.name === 'passwordConfirm') {
-      passwordConfirmValue = e.target.value;
-    }
-    console.log(style);
+  useEffect(() => {
     if (
       passwordConfirmValue === passwordValue &&
       passwordConfirmValue.length >= 6 &&
       passwordConfirmValue.length <= 12
     ) {
-      console.log(style);
-      setStyle({ width: '100%' });
+      return setStyle({ width: '100%' });
     } else if (passwordValue.length >= 6 && passwordValue.length <= 12) {
-      console.log(style);
-      setStyle({ width: '50%' });
+      return setStyle({ width: '50%' });
     } else {
-      setStyle({ width: '0%' });
+      return setStyle({ width: '0%' });
+    }
+  }, [passwordValue, passwordConfirmValue]);
+
+  const handleChange = e => {
+    if (e.target.name === 'password') {
+      setPasswordValue(e.target.value);
+    } else if (e.target.name === 'passwordConfirm') {
+      setPasswordConfirmValue(e.target.value);
     }
   };
 
@@ -123,15 +123,15 @@ export const RegisterForm = () => {
                 name="passwordConfirm"
                 placeholder="Confirm password"
               />
+              <div className={css.spanWrap}>
+                <span className={css.span} style={style}></span>
+              </div>
               <ErrorMessage
                 name="passwordConfirm"
                 component="div"
                 className={css.errorMessage}
               />
             </label>
-            <div className={css.spanWrap}>
-              <span className={css.span} style={style}></span>
-            </div>
             <label className={classNames(css.label, css.labelName)}>
               <Field
                 className={classNames(css.input, css.inputName)}
