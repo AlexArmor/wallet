@@ -2,14 +2,13 @@
   padding: 0 20px;
   background-color: #f1f2f7;
   height: calc(100vh - 63px);
-  overflow: hidden;
+  overflow: auto;
 }
 
 @media screen and (min-width: 768px) {
   .dashboard {
-    display: flex;
     height: calc(100vh - 83px);
-    flex-direction: column;
+    gap: 69px;
     padding: 0 32px;
     background-image: url(../../images/bg-blur-tab.jpg);
     background-size: cover;
@@ -28,11 +27,13 @@
 
 @media screen and (min-width: 1280px) {
   .dashboard {
+    display: flex;
     position: relative;
     flex-direction: row;
     justify-content: space-between;
     padding: 0 18px;
     background-image: url(../../images/bg-blur-desk.jpg);
+    overflow: hidden;
   }
   /* .dashboard::before {
     content: '';

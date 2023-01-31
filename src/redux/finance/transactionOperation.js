@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { Notify } from 'notiflix';
 import { instanceRegister } from 'redux/auth/authOperation';
 
 export const getAllTransaction = createAsyncThunk(
@@ -28,7 +29,20 @@ export const addTransaction = createAsyncThunk(
 
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(
+        Notify.failure(
+          'Incorrect data! Please check your details and try again.',
+          {
+            width: '320px',
+            fontSize: '16px',
+            useFontAwesome: true,
+            useIcon: false,
+            failure: {
+              background: '#ff6596',
+            },
+          }
+        )
+      );
     }
   }
 );
@@ -54,6 +68,21 @@ export const getTransactionCategories = createAsyncThunk(
       const { data } = await instanceRegister({
         method: 'GET',
         url: 'api/transaction-categories',
+      });
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const getTransactionSummary = createAsyncThunk(
+  'finance/getTransactionSummary',
+  async (queryPeriod, thunkAPI) => {
+    try {
+      const { data } = await instanceRegister({
+        method: 'GET',
+        url: '/api/transactions-summary',
+        params: queryPeriod,
       });
       return data;
     } catch (error) {
