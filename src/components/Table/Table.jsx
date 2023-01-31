@@ -7,6 +7,7 @@ import {
 import { useSelector } from 'react-redux';
 import { Loader } from 'components/Loader/Loader';
 
+
 const Table = () => {
   const loading = useSelector(selectLoading);
   const transactions = useSelector(selectAllTransactions);
@@ -14,7 +15,7 @@ const Table = () => {
   return (
       <div className={css.tableWrapper}>
         {loading && <Loader/>}
-        <table className={css.tableContainer}>
+        {transactions.length > 0 ? <table className={css.tableContainer}>
           <tbody>
             <tr className={css.tableNameList}>
               <td className={css.tableNameItem}>Date</td>
@@ -41,7 +42,12 @@ const Table = () => {
               );
             })}
           </tbody>
-        </table>
+        </table> : 
+        <div className={css.textNoTransactionsWrapper}>
+          {/* <img src='./images/cat.png'></img> */}
+          <p className={css.textNoTransactions}>Oops, there is no trasactions, yet.</p>
+          <p className={css.textNoTransactions}>To add new transaction click on the "Plus"!</p>
+        </div>}
       </div>
   );
 };
