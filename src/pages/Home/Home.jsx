@@ -10,15 +10,13 @@ export default function Home() {
   const isModalAddTransactionOpen = useSelector(
     state => state.global.isModalAddTransactionOpen
   );
-
-
   return (
     <>
-      <Media query="(max-width: 767px)" render={() => <p>Total Balance</p>} />
+      <Media query="(max-width: 767px)" render={() => <Balance/>} />
       <Media query="(max-width: 767px)" render={() => <MobileTransactionsList/>}/>
       <Media query="(min-width: 768px)" render={() => <Table/>}/>
       <ButtonAddTransaction/>
-      <Media query="(max-width: 767px)" render={() => <Balance />} />
+      {/* <Media query="(max-width: 767px)" render={() => <Balance />} /> */}
       <ButtonAddTransaction />
       {isModalAddTransactionOpen && <ModalAddTransaction />}
     </>

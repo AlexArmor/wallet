@@ -22,7 +22,7 @@ const transactionSlice = createSlice({
       state.isLoading = false;
     },
     [addTransaction.fulfilled](state, action) {
-      state.data.unshift(action.payload);
+      state.data.push(action.payload);
       state.totalBalance = action.payload.balanceAfter;
     },
     [deleteTransaction.fulfilled](state, action) {
