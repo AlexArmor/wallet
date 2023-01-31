@@ -10,7 +10,7 @@ import { MaterialUISwitch } from './SwitchModalComponent';
 import { TextareaAutosize, Typography } from '@mui/material';
 import { DatetimeAddTransaction } from './DatetimeAddTransaction';
 
-import { SelectAddTransaction } from './SelectAddTransaction';
+// import { SelectAddTransaction } from './SelectAddTransaction';
 import { UnstyledSelectSimple } from './SelectAddTransaction';
 
 const modalRoot = document.querySelector('#modal-root');

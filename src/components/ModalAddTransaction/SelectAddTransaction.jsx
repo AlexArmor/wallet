@@ -302,9 +302,6 @@ export const UnstyledSelectSimple = ({ onChange }) => {
     category => category.type !== 'INCOME'
   );
   const [category, setCategory] = React.useState('');
-  const incomeCategory = categories.find(
-    category => category.type === 'INCOME'
-  );
 
   return (
     <SelectUnstyled
