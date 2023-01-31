@@ -1,21 +1,20 @@
 import css from './MobileTransactionsList.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { getAllTransaction } from 'redux/finance/transactionOperation';
-import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import {
   selectAllTransactions,
   selectAllCategories,
+  selectLoading,
 } from 'redux/finance/selectors';
+import { Loader } from 'components/Loader/Loader';
 
 export const MobileTransactionsList = () => {
   const categories = useSelector(selectAllCategories);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getAllTransaction());
-  }, [dispatch]);
+  
   const transactions = useSelector(selectAllTransactions);
+  const loading = useSelector(selectLoading)
   return (
     <div className={css.containerMobile}>
+      {loading && <Loader/>}
       <ul className={css.tableListMobile}>
         {transactions.map(item => {
           return (

@@ -1,22 +1,19 @@
 import css from './Table.module.css';
-import { getAllTransaction } from 'redux/finance/transactionOperation';
-import { useEffect } from 'react';
 import {
   selectAllTransactions,
   selectAllCategories,
+  selectLoading,
 } from 'redux/finance/selectors';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { Loader } from 'components/Loader/Loader';
 
 const Table = () => {
-  const categories = useSelector(selectAllCategories);
-  const dispatch = useDispatch(); 
-  useEffect( () => {
-    dispatch( getAllTransaction());
-  }, [dispatch]);
+  const loading = useSelector(selectLoading);
   const transactions = useSelector(selectAllTransactions);
+  const categories = useSelector(selectAllCategories);
   return (
-    <>
       <div className={css.tableWrapper}>
+        {loading && <Loader/>}
         <table className={css.tableContainer}>
           <tbody>
             <tr className={css.tableNameList}>
@@ -46,27 +43,6 @@ const Table = () => {
           </tbody>
         </table>
       </div>
-{/*       <ul>
-        <li>Date</li>
-        <li>Type</li>
-        <li>Category</li>
-        <li>Comment</li>
-        <li>Sum</li>
-        <li>Balance</li>
-      </ul>
-      {transactions.map(item => {
-        return (
-          <ul>
-            <li>{item.transactionDate.slice(2, item.transactionDate.length).split('-').reverse().join('.')}</li>
-            <li>{item.type === 'INCOME' ? '+' : '-'}</li>
-            <li>{categories.find(obj => obj.id === item.categoryId )?.name ?? "Other category" }</li>
-            <li>{item.comment || 'No comment'}</li>
-            <li>{item.amount.toString().split('-').join('') + '.00'}</li>
-            <li>{item.balanceAfter + '.00'}</li>
-          </ul>
-        )
-      })} */}
-    </>
   );
 };
 

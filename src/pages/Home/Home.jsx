@@ -11,6 +11,7 @@ export default function Home() {
     state => state.global.isModalAddTransactionOpen
   );
 
+
   return (
     <>
       <Media query="(max-width: 767px)" render={() => <p>Total Balance</p>} />
@@ -18,7 +19,6 @@ export default function Home() {
       <Media query="(min-width: 768px)" render={() => <Table/>}/>
       <ButtonAddTransaction/>
       <Media query="(max-width: 767px)" render={() => <Balance />} />
-      <Table query="(max-device-width: 768px)" />
       <ButtonAddTransaction />
       {isModalAddTransactionOpen && <ModalAddTransaction />}
     </>

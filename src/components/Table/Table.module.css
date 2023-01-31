@@ -1,10 +1,30 @@
 .tableWrapper {
   width: 704px;
   margin: 0 auto;
+  margin-top: 20px;
 }
 @media screen and (min-width: 1280px) {
   .tableWrapper {
-    width: 715px;
+    left: 35px;
+    width: 725px;
+    margin-top: 46px;
+    height: 60vh;
+    overflow: hidden;
+    overflow-x: hidden;
+    padding-right: 5px;
+    position: relative;
+    
+  }
+  .tableWrapper::-webkit-scrollbar {
+    width: 5px;
+  }
+  .tableWrapper::-webkit-scrollbar-thumb {
+    background-color: rgba(74, 86, 226, 0.2);
+    border-radius: 5px;
+  }
+  .tableWrapper:hover {
+    overflow: auto;
+    overflow-x: hidden;
   }
 }
 .tableContainer {
@@ -16,28 +36,11 @@
 }
 @media screen and (min-width: 1280px) {
   .tableContainer {
-    display: block;
-    width: 100%;
+    width: 715px;
     border-spacing: 0;
-    padding-left: 69px;
-       height: 60vh;
-      overflow: auto;
-    margin-top: 46px;
-    overflow-x: hidden;
+    margin: 0;
   }
-
-  .tableContainer:hover {
-    overflow: auto;
-  }
-  .tableContainer::-webkit-scrollbar {
-    width: 5px;
-    
-  }
-
-  .tableContainer::-webkit-scrollbar-thumb {
-    background-color: rgba(74, 86, 226, 0.2);
-    border-radius: 5px;
-  }
+  
   .tableContainer > tbody {
     width: 100%;
   }
@@ -57,7 +60,7 @@
 }
 @media screen and (min-width: 1280px) {
   .tableNameItem:last-child {
-    padding-left: 30px;
+    padding-left: 50px;
   }
 }
 
