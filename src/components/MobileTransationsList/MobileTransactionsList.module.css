@@ -67,6 +67,9 @@
 .tableItemMobile:last-child > .tableItemMobileBlock {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .tableItemMobile:last-child > .tableItemMobileBlockGreen {
   border-bottom-left-radius: 5px;
@@ -76,6 +79,9 @@
 .tableItemMobile:last-child > .tableItemMobileBlock {
   padding-top: 6px;
   padding-bottom: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 /*  .tableItemMobile::after {
     content: '';
