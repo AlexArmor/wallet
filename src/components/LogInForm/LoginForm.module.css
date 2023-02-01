@@ -6,6 +6,21 @@
   background: var(--main-white-color);
   border-radius: 20px;
   text-align: center;
+  animation: 1000ms show linear;
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+    transform: scale(0.1);
+  }
+  50% {
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .logo {
