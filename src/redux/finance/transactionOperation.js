@@ -10,7 +10,9 @@ export const getAllTransaction = createAsyncThunk(
         method: 'GET',
         url: 'api/transactions',
       });
-
+      if (data.length === 0) {
+        return thunkAPI.rejectWithValue();
+      }
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -48,14 +50,14 @@ export const addTransaction = createAsyncThunk(
 );
 export const deleteTransaction = createAsyncThunk(
   'finance/deleteTransaction',
-  async (transactionId, thunkAPI) => {
+  async (item, thunkAPI) => {
     try {
-      const { data } = await instanceRegister({
+      await instanceRegister({
         method: 'DELETE',
-        url: `api/transactions/${transactionId}`,
+        url: `api/transactions/${item.id}`,
       });
 
-      return data;
+      return item;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import css from './Balance.module.css';
 
 const Balance = () => {
-  const currentBalance = useSelector(state => state.auth.user.balance);
+  // const currentBalance = useSelector(state => state.auth.user.balance);
   const updatedBalance = useSelector(state => state.finance.totalBalance);
   // const dispatch = useDispatch();
 
@@ -18,9 +18,7 @@ const Balance = () => {
       <p className={css.balanceItem}>
         <span className={css.balanceIcon}>₴</span> {}
         <span className={css.balanceValue}>
-          {!updatedBalance
-            ? currentBalance.toFixed(2)
-            : updatedBalance.toFixed(2)}
+          {!updatedBalance ? 0 : updatedBalance}
         </span>
       </p>
     </div>
