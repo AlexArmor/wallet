@@ -77,3 +77,18 @@ export const getTransactionCategories = createAsyncThunk(
     }
   }
 );
+export const getTransactionSummary = createAsyncThunk(
+  'finance/getTransactionSummary',
+  async (queryPeriod, thunkAPI) => {
+    try {
+      const { data } = await instanceRegister({
+        method: 'GET',
+        url: '/api/transactions-summary',
+        params: queryPeriod,
+      });
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { logOut } from 'redux/auth/authOperation';
 import { toggleModalLogoutOpen } from 'redux/global/globalSlice';
 import style from './ModalLogout.module.css';
+import classNames from 'classnames';
 const { createPortal } = require('react-dom');
 const { useDispatch } = require('react-redux');
 const modalRoot = document.querySelector('#modal-root');
@@ -32,7 +33,7 @@ const ModalLogout = () => {
         </span>
 
         <button
-          className={style.btnAgree}
+          className={classNames(style.btn, style.btnAgree)}
           type="button"
           onClick={() => {
             dispatch(toggleModalLogoutOpen());
@@ -43,7 +44,7 @@ const ModalLogout = () => {
         </button>
         <button
           type="button"
-          className={style.btnDisagree}
+          className={classNames(style.btn, style.btnDisagree)}
           onClick={() => {
             dispatch(toggleModalLogoutOpen());
           }}

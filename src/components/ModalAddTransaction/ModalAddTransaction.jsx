@@ -9,12 +9,10 @@ import * as yup from 'yup';
 import { MaterialUISwitch } from './SwitchModalComponent';
 import { TextareaAutosize, Typography } from '@mui/material';
 import { DatetimeAddTransaction } from './DatetimeAddTransaction';
-
 import { GrClose } from 'react-icons/gr';
-
-// import { SelectAddTransaction } from './SelectAddTransaction';
 import { UnstyledSelectSimple } from './SelectAddTransaction';
 import Media from 'react-media';
+import classNames from 'classnames';
 
 const modalRoot = document.querySelector('#modal-root');
 
@@ -46,7 +44,6 @@ const ModalAddTransaction = () => {
   };
 
   const [type, setType] = useState('EXPENSE');
-
   const [categoryId, setCategoryId] = useState('');
 
   const handleSetCatedory = id => {
@@ -212,12 +209,15 @@ const ModalAddTransaction = () => {
                     />
                   )}
                 />
-                <button type="submit" className={style.btnAgree}>
+                <button
+                  type="submit"
+                  className={classNames(style.btn, style.btnAgree)}
+                >
                   ADD
                 </button>
                 <button
                   type="button"
-                  className={style.btnDisagree}
+                  className={classNames(style.btn, style.btnDisagree)}
                   onClick={() => {
                     dispatch(toggleModalAddTransactionOpen());
                   }}

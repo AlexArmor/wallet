@@ -4,12 +4,14 @@ import {
   deleteTransaction,
   getAllTransaction,
   getTransactionCategories,
+  getTransactionSummary,
 } from './transactionOperation';
 
 const initialState = {
   totalBalance: '',
   data: [],
   categories: [],
+  dataPeriod: null,
   isLoading: false,
 };
 const transactionSlice = createSlice({
@@ -43,6 +45,9 @@ const transactionSlice = createSlice({
     },
     [getAllTransaction.rejected](state) {
       state.isLoading = false;
+    },
+    [getTransactionSummary.fulfilled](state, action) {
+      state.dataPeriod = action.payload;
     },
   },
 });

@@ -1,67 +1,67 @@
-.table{
-    width: 395px;
-    border: 1px solid black;
-    font-family: 'Circe';
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: calc(24/16);
+.table {
+  width: 100%;
+  border: 1px solid black;
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: calc(24 / 16);
 }
 
-.row{
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    padding: 14px 28px;
+.row {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 28px;
 }
-.row::before{
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    border: none;
-    display: block;
-    width: 100%;
-    height: 1px;
-    background-color:  #DCDCDF;
-    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
-}
-
-.head{
-    display: flex;
-    justify-content: space-between;
-    background: #FFFFFF;
-    border-radius: 30px;
-    padding: 16px 28px;
-
-    font-weight: 700;
-    font-size: 18px;
-    line-height: calc(27/18);
+.row::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border: none;
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #dcdcdf;
+  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
 }
 
-.summury{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
-    padding: 0 28px;
-    font-weight: 700;
+.head {
+  display: flex;
+  justify-content: space-between;
+  background: #ffffff;
+  border-radius: 30px;
+  padding: 16px 28px;
+
+  font-weight: 700;
+  font-size: 18px;
+  line-height: calc(27 / 18);
 }
 
-.expenses{
-    color: #FF6596;
+.summury {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  padding: 0 28px;
+  font-weight: 700;
 }
 
-.income{
-    color: #24CCA7;
+.expenses {
+  color: #ff6596;
 }
 
-.color_icon{
-    display: block;
-    width: 24px;
-    height: 24px;
+.income {
+  color: #24cca7;
 }
 
-.label{
-    display: flex;
-    gap: 16px;
+.color_icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.label {
+  display: flex;
+  gap: 16px;
 }
