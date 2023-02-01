@@ -1,7 +1,19 @@
 .container {
-  padding: 40px 20px;
+  padding: 40px 0;
   max-width: 320px;
   margin: 0 auto;
+}
+
+.chart_label {
+  position: absolute;
+  display: inline-block;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  font-family: 'Circe';
+  font-weight: 700;
+  font-size: 18px;
+  line-height: calc(27 / 18);
 }
 
 .title {
@@ -18,6 +30,7 @@
 }
 
 .chart_wrap {
+  position: relative;
   width: 280px;
   height: 280px;
   margin-bottom: 32px;
@@ -33,7 +46,7 @@
 
 @media screen and (min-width: 768px) {
   .container {
-    padding: 20px 32px;
+    padding: 20px 0;
     max-width: 768px;
   }
   .bottom_wrap {
@@ -59,7 +72,7 @@
 
 @media screen and (min-width: 1280px) {
   .container {
-    padding: 32px 16px 44px 69px;
+    padding: 32px 0 44px 69px;
     max-width: 800px;
   }
   .bottom_wrap {
