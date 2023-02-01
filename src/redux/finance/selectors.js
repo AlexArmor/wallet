@@ -1,4 +1,4 @@
-export const selectAllTransactions = state => state.finance.data;
+export const selectAllTransactions = state => [...state.finance.data].reverse();
 
 export const selectAllCategories = state => state.finance.categories;
 

@@ -25,7 +25,7 @@ export default function Statistics() {
             <div className={css.selects_wrap}>
               <UnstyledSelectSimple />
             </div>
-            {shouldRender && <StatTable stat={statData} />}
+            {shouldRender ? <StatTable stat={statData} /> : <div className={css.noStatistics}>There is no statistics, yet.</div>}
           </div>
         </div>
       </section>
