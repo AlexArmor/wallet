@@ -61,10 +61,10 @@ const Table = () => {
                         : css.tableSumExpense
                     }
                   >
-                    {item.amount.toString().split('-').join('') + '.00'}
+                    {item.amount.toFixed(2).toString().split('-').join('')}
                   </td>
                   <td className={css.tableValueItem}>
-                    {item.balanceAfter + '.00'}
+                    {item.balanceAfter.toFixed(2)}
                   </td>
                   <td className={css.tableValueItem}>
                     <IconButton

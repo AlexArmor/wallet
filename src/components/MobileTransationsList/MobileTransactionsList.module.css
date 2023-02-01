@@ -76,16 +76,10 @@
 .tableItemMobile:last-child > .tableItemMobileBlock {
   padding-top: 6px;
   padding-bottom: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-/*  .tableItemMobile::after {
-    content: '';
-    display: block;
-    height: 1px;
-    width: 100%;
-    background-color: var(--main-light-color);
-    position: relative;
-    top: 50px;
-  } */
 
 .itemNameMobile {
   font-weight: 700;
