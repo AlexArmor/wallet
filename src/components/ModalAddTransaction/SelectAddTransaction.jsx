@@ -188,7 +188,7 @@ export const UnstyledSelectSimple = ({ onChange }) => {
       slots={slots}
       renderValue={renderValue}
       onChange={e => {
-        console.log(e.target.id);
+  
         setCategory(e.target.id);
         onChange(e.target.id);
       }}

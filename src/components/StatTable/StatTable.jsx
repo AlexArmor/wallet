@@ -11,6 +11,7 @@ const backgroundColors = [
   '#81E1FF',
   '#24CCA7',
   '#00AD84',
+  '#fce19d',
 ];
 
 export const StatTable = ({ stat }) => {

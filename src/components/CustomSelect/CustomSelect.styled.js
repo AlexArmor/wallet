@@ -4,7 +4,7 @@ import OptionUnstyled, {
 } from '@mui/base/OptionUnstyled';
 import PopperUnstyled from '@mui/base/PopperUnstyled';
 import { styled } from '@mui/system';
-
+import arrowDown from '../../icons/arrowDown.svg';
 export const StyledButton = styled('button')`
   font-family: 'Circe';
   font-style: normal;
@@ -19,7 +19,7 @@ export const StyledButton = styled('button')`
   background: transparent;
   border: 1px solid #000000;
   border-radius: 30px;
-
+  position: relative;
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 120ms;
@@ -35,13 +35,33 @@ export const StyledButton = styled('button')`
 
   &.${selectUnstyledClasses.expanded} {
     &::after {
-      content: '▴';
+      content: '';
+      color: #000;
+      fill: #000;
+      stroke: #000;
+      position: absolute;
+      width: 20px;
+      height: 11px;
+      right: 20px;
+      bottom: 20px;
+      background-image: url(${arrowDown});
+      background-repeat: no-repeat;
+      transform: rotate(180deg);
     }
   }
 
   &::after {
-    content: '▾';
-    float: right;
+    content: '';
+    color: #000;
+    fill: #000;
+    stroke: #000;
+    position: absolute;
+    width: 20px;
+    height: 11px;
+    right: 20px;
+    bottom: 20px;
+    background-image: url(${arrowDown});
+    background-repeat: no-repeat;
   }
 
   @media screen and (min-width: 768px) {
