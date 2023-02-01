@@ -55,7 +55,7 @@
   color: var(--main-black-color);
 }
 .tableNameItem:last-child {
-  padding-left: 60px;
+  padding-left: 20px;
 }
 @media screen and (min-width: 1280px) {
   .tableNameItem:last-child {
@@ -96,12 +96,16 @@
   padding-left: 30px;
 }
 .tableValueItem:last-child {
-  text-align: right;
-  padding-right: 40px;
+  padding-right: 20px;
+  padding-left: 0px;
+  text-align: center;
+  color: var(--accent-secondary-color);
 }
 @media screen and (min-width: 1280px) {
   .tableValueItem:last-child {
     padding-right: 20px;
+    padding-left: 0px;
+    text-align: center;
   }
 }
 
@@ -132,29 +136,4 @@
   .tableSumExpense {
     padding-right: 10px;
   }
-}
-
-.textNoTransactionsWrapper {
-  background-image: url(../../images/cat.png);
-  background-size: contain;
-  background-position: top;
-  background-repeat: no-repeat;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  justify-content: space-between;
-    height: 40vh;
-}
-
-@media screen and (min-width: 1280px) {
-  .textNoTransactionsWrapper {
-    justify-content: flex-end;
-    height: 50vh;
-  }
-}
-
-.textNoTransactions {
-  text-align: center;
-  font-size: 25px;
-  font-weight: 700;
 }

@@ -1,6 +1,7 @@
 .loaderWrap {
   position: relative;
   width: 280px;
+  margin: 0 auto;
 }
 .wrapTable {
   margin: 0 auto;

@@ -6,6 +6,7 @@ import {
 } from 'redux/finance/selectors';
 import { useSelector, useDispatch } from 'react-redux';
 import { Loader } from 'components/Loader/Loader';
+import { NoTransactions } from 'components/NoTransactions/NoTransactions';
 import { deleteTransaction } from 'redux/finance/transactionOperation';
 
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -21,7 +22,7 @@ const Table = () => {
   return (
     <div className={css.tableWrapper}>
       {loading && <Loader />}
-      {transactions.length > 0 ? (
+      {transactions.length > 0 ? 
         <table className={css.tableContainer}>
           <tbody>
             <tr className={css.tableNameList}>
@@ -69,7 +70,7 @@ const Table = () => {
                     <IconButton
                       edge="end"
                       aria-label="delete"
-                      color="error"
+                      color="inherit"
                       type="button"
                       onClick={() => {
                         const action = deleteTransaction(item);
@@ -86,17 +87,9 @@ const Table = () => {
             })}
           </tbody>
         </table>
-      ) : (
-        <div className={css.textNoTransactionsWrapper}>
-          {/* <img src='./images/cat.png'></img> */}
-          <p className={css.textNoTransactions}>
-            Oops, there is no transactions, yet.
-          </p>
-          <p className={css.textNoTransactions}>
-            To add new transaction click on the "Plus"!
-          </p>
-        </div>
-      )}
+       : 
+        <NoTransactions/>
+      }
     </div>
   );
 };
