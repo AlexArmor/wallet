@@ -51,7 +51,6 @@ const ModalAddTransaction = () => {
   };
 
   const handleSubmitAddTransaction = (value, actions) => {
-    console.log('Hi');
     const dataForRequest = {
       type: value.type,
       amount: value.type === 'EXPENSE' ? -value.amount : value.amount,
@@ -127,7 +126,6 @@ const ModalAddTransaction = () => {
                     defaultChecked
                     name="type"
                     onChange={e => {
-                      console.log(categoryId);
                       if (e.target.checked) {
                         values.type = 'EXPENSE';
                         e.target.value = 'EXPENSE';
@@ -173,7 +171,6 @@ const ModalAddTransaction = () => {
                     className={style.dateInput}
                     component={DatetimeAddTransaction}
                     onChange={e => {
-                      console.log(values);
                       values.transactionDate = e.toISOString().substring(0, 10);
                     }}
                   ></Field>
