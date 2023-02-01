@@ -31,11 +31,18 @@ const transactionSlice = createSlice({
     },
 
     [deleteTransaction.fulfilled](state, action) {
+      state.isLoading = false;
       const index = state.data.findIndex(
         transaction => transaction.id === action.payload.id
       );
       state.data.splice(index, 1);
       state.totalBalance = Number(state.totalBalance) - action.payload.amount;
+    },
+    [deleteTransaction.pending](state) {
+      state.isLoading = true;
+    },
+    [deleteTransaction.rejected](state) {
+      state.isLoading = false;
     },
     [getTransactionCategories.fulfilled](state, action) {
       state.categories = action.payload;

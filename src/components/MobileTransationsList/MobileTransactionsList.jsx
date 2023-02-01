@@ -133,7 +133,7 @@ export const MobileTransactionsList = () => {
                         <IconButton
                           edge="end"
                           aria-label="delete"
-                          color="error"
+                          color="inherit"
                           type="button"
                           onClick={() => {
                             const action = deleteTransaction(item);
