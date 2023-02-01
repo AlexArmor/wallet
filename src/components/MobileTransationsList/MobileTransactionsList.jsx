@@ -1,13 +1,16 @@
 import css from './MobileTransactionsList.module.css';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   selectAllTransactions,
   selectAllCategories,
   selectLoading,
 } from 'redux/finance/selectors';
 import { Loader } from 'components/Loader/Loader';
-
+import DeleteIcon from '@mui/icons-material/Delete';
+import { IconButton } from '@mui/material';
+import { deleteTransaction } from 'redux/finance/transactionOperation';
 export const MobileTransactionsList = () => {
+  const dispatch = useDispatch();
   const categories = useSelector(selectAllCategories);
 
   const transactions = useSelector(selectAllTransactions);
@@ -114,6 +117,33 @@ export const MobileTransactionsList = () => {
                         <span className={css.itemNameMobile}>Balance</span>
                         <span className={css.itemValueMobile}>
                           {item.balanceAfter}
+                        </span>
+                      </div>
+                    </li>
+                    <li className={css.tableItemMobile}>
+                      <div
+                        className={
+                          item.type === 'INCOME'
+                            ? css.tableItemMobileBlockGreen
+                            : css.tableItemMobileBlock
+                        }
+                      >
+                        <span className={css.itemNameMobile}></span>
+                        <span className={css.itemValueMobile}>
+                          <IconButton
+                            edge="end"
+                            aria-label="delete"
+                            color="error"
+                            type="button"
+                            onClick={() => {
+                              const action = deleteTransaction(item);
+                              dispatch(action);
+                              console.log(item.id);
+                            }}
+                            variant="outlined"
+                          >
+                            <DeleteIcon />
+                          </IconButton>
                         </span>
                       </div>
                     </li>

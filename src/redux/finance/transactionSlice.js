@@ -22,16 +22,20 @@ const transactionSlice = createSlice({
     [getAllTransaction.fulfilled](state, action) {
       state.data = action.payload;
       state.isLoading = false;
+      state.totalBalance =
+        action.payload[action.payload.length - 1].balanceAfter;
     },
     [addTransaction.fulfilled](state, action) {
       state.data.push(action.payload);
       state.totalBalance = action.payload.balanceAfter;
     },
+
     [deleteTransaction.fulfilled](state, action) {
       const index = state.data.findIndex(
         transaction => transaction.id === action.payload.id
       );
       state.data.splice(index, 1);
+      state.totalBalance = Number(state.totalBalance) - action.payload.amount;
     },
     [getTransactionCategories.fulfilled](state, action) {
       state.categories = action.payload;
