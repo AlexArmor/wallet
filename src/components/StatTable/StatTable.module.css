@@ -73,7 +73,7 @@
     padding-left: 15px;
   }
 }
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1280px) {
   .row {
     padding-left: 30px;
     padding-right: 30px;
