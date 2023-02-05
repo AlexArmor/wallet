@@ -2,7 +2,7 @@
   "name": "wallet",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://svetlankogr.github.io/wallet/",
+  "homepage": "https://AlexArmor.github.io/wallet/",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
