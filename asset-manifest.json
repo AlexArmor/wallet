@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/wallet/static/css/main.2e079321.css",
+    "main.js": "/wallet/static/js/main.26698832.js",
+    "static/media/cat.png": "/wallet/static/media/cat.f6629121bd6a8aad89ca.png",
+    "static/media/Circe-Bold.woff": "/wallet/static/media/Circe-Bold.fca9743700608e1abf6a.woff",
+    "static/media/Circe-Regular.woff": "/wallet/static/media/Circe-Regular.a5168fcec068fa77220a.woff",
+    "static/media/Poppins-Regular.woff": "/wallet/static/media/Poppins-Regular.9b9d9585fc27c8fff554.woff",
+    "static/media/Poppins-Bold.woff": "/wallet/static/media/Poppins-Bold.c4e77e991e26d17e68c5.woff",
+    "static/media/bg-desk@2x.jpg": "/wallet/static/media/bg-desk@2x.15ab26a0a9addb51a6d4.jpg",
+    "static/media/bg-blur-desk@2x.jpg": "/wallet/static/media/bg-blur-desk@2x.6269e0e9461b2f5082e4.jpg",
+    "static/media/bg-blur-tab@2x.jpg": "/wallet/static/media/bg-blur-tab@2x.575560536f380d8666f4.jpg",
+    "static/media/bg-tab@2x.jpg": "/wallet/static/media/bg-tab@2x.7dd7703f4f26eebb395a.jpg",
+    "static/media/phone-login.svg": "/wallet/static/media/phone-login.8f727c9a88d2012b1c04.svg",
+    "static/media/phone-registr.svg": "/wallet/static/media/phone-registr.78ce041bb177c5c65a3b.svg",
+    "static/media/bg-desk.jpg": "/wallet/static/media/bg-desk.e5fa62f27f6e50e65748.jpg",
+    "static/media/bg-blur-desk.jpg": "/wallet/static/media/bg-blur-desk.48c189956f8193df5dcb.jpg",
+    "static/media/bg-tab.jpg": "/wallet/static/media/bg-tab.f2f50d37077c631435ce.jpg",
+    "static/media/bg-blur-tab.jpg": "/wallet/static/media/bg-blur-tab.8fdd6373dbd039037981.jpg",
+    "static/media/sprite.svg": "/wallet/static/media/sprite.62d328dd31062bf9af713ef190244030.svg",
+    "static/media/currency-img-tablet.svg": "/wallet/static/media/currency-img-tablet.fae4a9c7f98c64fc6f39.svg",
+    "static/media/currency-img-desktop.svg": "/wallet/static/media/currency-img-desktop.2965f3691046b64b7ba2.svg",
+    "static/media/currency-img-mobile.svg": "/wallet/static/media/currency-img-mobile.340c22a500ab5a21cd92.svg",
+    "index.html": "/wallet/index.html",
+    "static/media/lock.svg": "/wallet/static/media/lock.bc2d0405cd2652ac8bce.svg",
+    "static/media/account_box.svg": "/wallet/static/media/account_box.f0689cc4bc652243768a.svg",
+    "static/media/email.svg": "/wallet/static/media/email.d6e114a6a80d46bb8f7a.svg",
+    "static/media/plus.svg": "/wallet/static/media/plus.6194a661e88e1e5113d28da2398b6404.svg",
+    "static/media/minus.svg": "/wallet/static/media/minus.c1930871236002c803c7b6a6c0b99024.svg",
+    "static/media/arrowDown.svg": "/wallet/static/media/arrowDown.77b989b3724c691229812f9ba569ef26.svg",
+    "main.2e079321.css.map": "/wallet/static/css/main.2e079321.css.map",
+    "main.26698832.js.map": "/wallet/static/js/main.26698832.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2e079321.css",
+    "static/js/main.26698832.js"
+  ]
+}
