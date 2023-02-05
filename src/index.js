@@ -11,6 +11,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <React.StrictMode>
+        {/* hello */}
         <BrowserRouter basename="/wallet">
           <App />
         </BrowserRouter>
